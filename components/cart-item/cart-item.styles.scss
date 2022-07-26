@@ -1,0 +1,50 @@
+.item {
+  display: flex;
+
+  align-items: center;
+
+  width: 100%;
+
+  padding-bottom: 2.5rem;
+
+  &:not(:last-child) {
+    border-bottom: var(--border-b-prim);
+    border-width: 1px;
+  }
+
+  &__img-and-desc {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  &__image {
+    width: 4.7rem;
+    height: 4.7rem;
+    border-radius: 0.5rem;
+  }
+
+  &__description {
+    color: hsl(var(--clr-gray--300));
+  }
+
+  &__name {
+    display: inline-block;
+    max-width: 18ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__x-sign {
+    font-size: 1.4rem;
+  }
+
+  &__full-price {
+    color: hsl(var(--clr-gray--400));
+    font-weight: var(--ff-w-b);
+  }
+
+  &__delete {
+    margin-left: auto;
+  }
+}

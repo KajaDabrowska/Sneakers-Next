@@ -1,0 +1,18 @@
+.about {
+  text-align: center;
+
+  &__titile {
+    margin-bottom: 2rem;
+  }
+
+  &__text {
+    margin-bottom: 4rem;
+    &--accent {
+      color: hsl(var(--clr-prim));
+    }
+  }
+
+  &__img {
+    width: 30rem;
+  }
+}

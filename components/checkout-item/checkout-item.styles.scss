@@ -1,0 +1,80 @@
+.checkout-item {
+  // padding: 1rem 1rem;
+
+  &__flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    max-width: 35rem;
+
+    &:not(:last-child) {
+      border-bottom: var(--border-b-prim);
+      border-width: 1px;
+    }
+
+    &__image {
+      width: 8.7rem;
+      height: 8.7rem;
+      border-radius: 0.5rem;
+      // can't have gap on parent because it causes issues for delete icon
+      margin-right: 1rem;
+    }
+
+    &__description {
+      color: hsl(var(--clr-gray--300));
+      display: inline-block;
+      max-width: max(16ch, 52vw);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__x-sign {
+      font-size: 1.4rem;
+    }
+
+    &__full-price {
+      color: hsl(var(--clr-gray--400));
+      font-weight: var(--ff-w-b);
+    }
+
+    &__delete {
+      margin-left: auto;
+      align-self: end;
+    }
+  }
+
+  &__counter {
+    background-color: hsl(var(--clr-gray--100));
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 12rem;
+  }
+
+  .counter {
+    &__btn {
+      cursor: pointer;
+      background-color: hsl(var(--clr-gray--100));
+      border: none;
+      border-radius: 1rem;
+      padding: 1rem 1.5rem;
+
+      &:hover .counter__icon,
+      &:active .counter__icon {
+        opacity: 0.5;
+      }
+    }
+
+    &__count {
+      font-weight: var(--ff-w-b);
+      color: hsl(var(--clr-gray--400));
+    }
+  }
+}

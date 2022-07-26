@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "brand": "Adidas",
+    "name": "Stan Smith Pride Shoes",
+    "imageUrl": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/8020d7fee088442d8da2ae2801123818_9366/Stan_Smith_Pride_Shoes_White_GX6394_01_standard.jpg",
+    "images": [
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0d31fc9bf37c4fb8bd9eae280111ffa4_9366/Stan_Smith_Pride_Shoes_White_GX6394_011_hover_standard.jpg",
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/59a4b6279f974ef29c07ae280112afcf_9366/Stan_Smith_Pride_Shoes_White_GX6394_02_standard.jpg",
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/cc28d998187445879ee3ae2d01455982_9366/Stan_Smith_Pride_Shoes_White_GX6394_010_hover_standard.jpg"
+    ],
+    "description": "The 2022 adidas X Kris Andrew Small Pride Collection was inspired by the Stonewall Activists of the Stonewall Uprising in 1969. Together adidas and Kris Andrew Small offer a collection in solidarity & celebration of the LGBTQIA+ community's past & present, honouring unique belonging – creating a colourful & diverse graphic message among this inclusive & optimistic collection. This partnership is also adjacent to adidas' two key Global Purpose Partners, Athlete Ally & Stonewall UK.",
+    "hasMultiplePrices": true,
+    "price": {
+      "current": 90,
+      "old": 120
+    }
+  },
+  {
+    "id": 2,
+    "brand": "Adidas",
+    "name": "ZX 5K Boost Shoes",
+    "imageUrl": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/66088b4dac8a46449e5badf3017eaf2e_9366/ZX_5K_Boost_Shoes_White_GW3040_01_standard.jpg",
+    "images": [
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/06af3311feb443858b61adf3017f005c_9366/ZX_5K_Boost_Shoes_White_GW3040_02_standard_hover.jpg",
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/eb4ad7f0f62349eb853aadf3017cf71d_9366/ZX_5K_Boost_Shoes_White_GW3040_03_standard.jpg",
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/e17b94526a0e4f8d851aadf3017de0d3_9366/ZX_5K_Boost_Shoes_White_GW3040_04_standard.jpg"
+    ],
+    "description": "If you had to decide between style and innovation, which would you choose? Silly question. You shouldn't have to make a decision like that. Just lace up in these adidas ZX 5K Boost Shoes and be done with it. Built on the innovative spirit of the ZX design code, they have a full-length Boost midsole wrapped in translucent tooling. Suede overlays and reflective details accent the mesh upper for style that shines.",
+    "hasMultiplePrices": false,
+    "price": {
+      "current": 160,
+      "old": 160
+    }
+  },
+  {
+    "id": 3,
+    "brand": "Adidas",
+    "name": "Superstar shoes",
+    "imageUrl": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/50dc6f975e9640718ba3ae0c015737b7_9366/Superstar_Shoes_White_HP5403_01_standard.jpg",
+    "images": [
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0193a34ba7454d6bb2a1ae0c01582e24_9366/Superstar_Shoes_White_HP5403_02_standard_hover.jpg",
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/b0448f82fce441e9ab3eae0c01565496_9366/Superstar_Shoes_White_HP5403_03_standard.jpg",
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/28187d20dbf24d41a991ae0c015712f6_9366/Superstar_Shoes_White_HP5403_04_standard.jpg"
+    ],
+    "description": "A fixture on the cultural scene for more than 50 years, the adidas Superstar Shoes are one of the most iconic adidas sneakers ever created. Not much has changed to the design over the last half a century. But where they've been — that's a different story. They started on the hardwood, and have since been worn just about everywhere else: hip hop stages, runways, you name it. All the classic details remain unchanged, from the rubber shell toe to the serrated 3-Stripes. Just a little color update, that's all.",
+    "hasMultiplePrices": false,
+    "price": {
+      "current": 100,
+      "old": 100
+    }
+  },
+  {
+    "id": 4,
+    "brand": "Adidas",
+    "name": "Stan Smith Shoes",
+    "imageUrl": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/68ae7ea7849b43eca70aac1e00f5146d_9366/Stan_Smith_Shoes_White_FX5502_01_standard.jpg",
+    "images": [
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/ac706d8555244a6e8ea7ac1e00f521d1_9366/Stan_Smith_Shoes_White_FX5502_02_standard_hover.jpg",
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/72a38538fd684788b5d9ac1e00f52860_9366/Stan_Smith_Shoes_White_FX5502_03_standard.jpg",
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/f86168171d2a4644a8eeac1e00f52f85_9366/Stan_Smith_Shoes_White_FX5502_04_standard.jpg"
+    ],
+    "description": "Timeless appeal. Effortless style. Everyday versatility. For over 50 years and counting, adidas Stan Smith Shoes have continued to hold their place as an icon. This pair shows off a fresh redesign as part of adidas' commitment to use only recycled polyester by 2024. With a vegan upper and an outsole made from rubber waste, they still have iconic style, they're just made with the planet in mind.",
+    "hasMultiplePrices": false,
+    "price": {
+      "current": 95,
+      "old": 95
+    }
+  },
+  {
+    "id": 5,
+    "brand": "Adidas",
+    "name": "Ultraboost Climacool 2 DNA Shoes",
+    "imageUrl": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/992454f9303d4b54a7c0ae37012debd1_9366/Ultraboost_Climacool_2_DNA_Shoes_Orange_GX2945_01_standard.jpg",
+    "images": [
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/a8b90a5717e74258a197ae37012e74a2_9366/Ultraboost_Climacool_2_DNA_Shoes_Orange_GX2945_02_standard_hover.jpg",
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/25b2521a75404de9a9bcae37012c4e42_9366/Ultraboost_Climacool_2_DNA_Shoes_Orange_GX2945_03_standard.jpg",
+      "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/ad5039cb921e4309bbacae37012d3d2b_9366/Ultraboost_Climacool_2_DNA_Shoes_Orange_GX2945_04_standard.jpg"
+    ],
+    "description": "Not just one icon. Two. Celebrate adidas running heritage in these shoes that combine the legendary Ultraboost design with our cult classic, the Climacool. The foot-hugging adidas PRIMEKNIT upper has a forged mono mesh cage that keeps the air flowing, and BOOST in the midsole provides energy return no matter how long you're on your feet.",
+    "hasMultiplePrices": false,
+    "price": {
+      "current": 190,
+      "old": 190
+    }
+  }
+]

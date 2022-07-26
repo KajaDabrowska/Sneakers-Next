@@ -1,0 +1,14 @@
+.user {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .sign-up__link {
+    color: hsl(var(--clr-prim));
+    font-weight: var(--ff-w-b);
+  }
+
+  &__sign-out-btn {
+    margin-top: 5.5rem;
+  }
+}

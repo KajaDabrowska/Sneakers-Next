@@ -1,0 +1,32 @@
+.btn {
+  // z-index: 9000;
+  cursor: pointer;
+  background-color: transparent;
+  background-image: url(../../assets/icon-menu.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border: none;
+  width: 1.8rem;
+  height: 1.6rem;
+
+  &[aria-expanded="true"] {
+    background-image: url(../../assets/icon-close.svg);
+  }
+
+  //TODO these colors
+  &:hover {
+    transform: scale(0.95);
+    filter: brightness(0) saturate(100%) invert(98%) sepia(0%) saturate(3247%)
+      hue-rotate(212deg) brightness(85%) contrast(92%);
+  }
+
+  &:active {
+    filter: brightness(0) saturate(100%) invert(39%) sepia(0%) saturate(0%)
+      hue-rotate(139deg) brightness(130%) contrast(88%);
+  }
+
+  @media (min-width: 62.5em) {
+    display: none;
+  }
+}
