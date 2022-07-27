@@ -79,21 +79,21 @@ const ItemPage = ({ item }) => {
             />
           </button>
 
-          <ImageCarousel
+          {/* <ImageCarousel
             imageUrl={imageUrl}
             imagesArray={images}
             toggleModal={toggleModal}
             isModal={true}
-          />
+          /> */}
         </dialog>
 
         <div className="container-left">
-          <ImageCarousel
+          {/* <ImageCarousel
             imageUrl={imageUrl}
             imagesArray={images}
             toggleModal={toggleModal}
             isModal={false}
-          />
+          /> */}
         </div>
 
         <div className="container-right">

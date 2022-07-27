@@ -8,7 +8,10 @@ import {
 } from "../../src/store/cart/cart.selector";
 import { setCartDropdownHidden } from "../../src/store/cart/cartSlice";
 
-import "./cart-icon.styles.scss";
+//TODO SVGs in NEXT
+import cartIcon from "../../public/assets/icon-cart.svg";
+
+import styles from "./cart-icon.module.scss";
 
 const CartIcon = React.forwardRef<HTMLButtonElement>((props, ref) => {
   const cartCount = useSelector(selectCartCount);
@@ -20,18 +23,17 @@ const CartIcon = React.forwardRef<HTMLButtonElement>((props, ref) => {
     dispatch(setCartDropdownHidden(!cartDropdownHidden));
   };
 
-  return (
-    <button className="cart-icon" onClick={toggleCartHidden} ref={ref}>
-      <Image
-        src="../../public/assets/icon-cart.svg"
-        className={`cart-icon__icon ${cartCount ? "active" : ""}`}
-      />
+  //FIXME works?
+  const activeStyles = cartCount ? styles.active : "";
 
-      {cartCount ? (
-        <span className="cart-icon__items-amount">{cartCount}</span>
-      ) : (
-        ""
-      )}
+  return (
+    <button className={styles.cartIcon} onClick={toggleCartHidden} ref={ref}>
+      <Image
+        layout="fill"
+        src={cartIcon}
+        className={`${styles.icon} ${activeStyles}`}
+      />
+      {cartCount ? <span className={styles.amount}>{cartCount}</span> : ""}
     </button>
   );
 });

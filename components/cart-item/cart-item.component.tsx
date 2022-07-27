@@ -5,7 +5,7 @@ import { ItemType } from "../../src/types/types";
 
 import DeleteIcon from "../delete-icon/delete-icon.component";
 
-import "./cart-item.styles.scss";
+import styles from "./cart-item.module.scss";
 
 type Props = {
   cartItem: ItemType;
@@ -19,21 +19,21 @@ const CartItem = ({ cartItem }: Props) => {
 
   //TODO how does a screen reader announce this type of big ass link
   return (
-    <li className="cart-dropdown__item item">
+    <li className={styles.item}>
       {/*FIXME i should be a next js [] route  */}
-      <Link className="item__img-and-desc" href={`/product-${cartItem.id}`}>
-        <img className="item__image" src={imageUrl} alt="" />
+      <Link className={styles.imgAndDesc} href={`/product-${cartItem.id}`}>
+        <img className={styles.image} src={imageUrl} alt="" />
 
-        <div className="item__description">
-          <span className="item__name">{name}</span>
+        <div className={styles.description}>
+          <span className={styles.name}>{name}</span>
           <p>
-            <span className="item__price-per-one">
+            <span>
               ${currentPrice}.00
               {quantity > 1 ? (
                 <Fragment>
-                  <span className="item__x-sign">&nbsp;x&nbsp;</span>
-                  <span className="item__amount">{quantity}&nbsp;&nbsp;</span>
-                  <span className="item__full-price">${itemTotalPrice}.00</span>
+                  <span className={styles.xSign}>&nbsp;x&nbsp;</span>
+                  <span>{quantity}&nbsp;&nbsp;</span>
+                  <span className={styles.fullPrice}>${itemTotalPrice}.00</span>
                 </Fragment>
               ) : (
                 ""
@@ -43,7 +43,7 @@ const CartItem = ({ cartItem }: Props) => {
         </div>
       </Link>
 
-      <div className="item__delete">
+      <div className={styles.delete}>
         <DeleteIcon itemToDelete={cartItem} />
       </div>
     </li>

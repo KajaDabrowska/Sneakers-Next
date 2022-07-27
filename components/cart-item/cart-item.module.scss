@@ -12,22 +12,22 @@
     border-width: 1px;
   }
 
-  &__img-and-desc {
+  .imgAndDesc {
     display: flex;
     gap: 1.5rem;
   }
 
-  &__image {
+  .image {
     width: 4.7rem;
     height: 4.7rem;
     border-radius: 0.5rem;
   }
 
-  &__description {
+  .description {
     color: hsl(var(--clr-gray--300));
   }
 
-  &__name {
+  .name {
     display: inline-block;
     max-width: 18ch;
     white-space: nowrap;
@@ -35,16 +35,16 @@
     text-overflow: ellipsis;
   }
 
-  &__x-sign {
+  .xSign {
     font-size: 1.4rem;
   }
 
-  &__full-price {
+  .fullPrice {
     color: hsl(var(--clr-gray--400));
     font-weight: var(--ff-w-b);
   }
 
-  &__delete {
+  .delete {
     margin-left: auto;
   }
 }

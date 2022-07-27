@@ -60,9 +60,7 @@ export default function App() {
     <div className="">
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <AddBtnContextProvider>
-            <App />
-          </AddBtnContextProvider>
+          <AddBtnContextProvider>{/* <App /> */}</AddBtnContextProvider>
         </PersistGate>
       </Provider>
 

@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, FC, useRef, useEffect } from "react";
 
-import "./button.styles.scss";
+import styles from "./button.module.scss";
 
 type BtnTypes = "google" | "checkout";
 
@@ -18,8 +18,9 @@ const Button: FC<ButtonProps> = ({ children, btnType, ...otherProps }) => {
     }
   }, []);
 
+  //FIXME btn type
   return (
-    <button ref={btnRef} className={`btn ${btnType}`} {...otherProps}>
+    <button ref={btnRef} className={`${styles.btn} ${btnType}`} {...otherProps}>
       {children}
     </button>
   );

@@ -1,6 +1,6 @@
 import { InputHTMLAttributes, FC } from "react";
 
-import "./form-input.styles.scss";
+import styles from "./form-input.module.scss";
 
 type Props = {
   label: string;
@@ -12,15 +12,13 @@ const FormInput: FC<Props> = ({ label, ...otherProps }) => {
 
   const value = otherProps.value;
 
+  const addStyles =
+    typeof value === "string" && value.length ? styles.shrink : "";
+
   return (
-    <div className="form-input">
-      <input {...otherProps} className="labels-input" />
-      <label
-        htmlFor={labelFor}
-        className={`label ${
-          typeof value === "string" && value.length ? "shrink" : ""
-        }`}
-      >
+    <div className={styles.container}>
+      <input {...otherProps} className={styles.input} />
+      <label htmlFor={labelFor} className={`${styles.label} ${addStyles}`}>
         {label}
       </label>
     </div>

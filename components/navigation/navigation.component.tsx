@@ -1,24 +1,65 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSelector } from "react-redux";
-// import { Outlet, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
-// import logo from "../../public/assets/logo.svg";
-// import user from "../../public/images/image-avatar.png";
-// import blancUser from "../../public/images/image-blanc-avatar.png";
+import { User as UserType } from "firebase/auth";
+import {
+  onAuthStateChangedListener,
+  createUserDocFromAuth,
+} from "../../src/utils/firebase/firebase.utils";
 
-import "./navigation.styles.scss";
+import { AppDispatchType } from "../../src/store/store";
+import { fetchCategories } from "../../src/store/category/categoryReducer";
+
 import MobileNavToggleBtn from "../MobileNavToggleBtn/MobileNavToggleBtn.component";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import FocusTrap from "../focus-trap/focus-trap.component";
 
 import { selectCurrentUser } from "../../src/store/user/user.selector";
+import { setUser } from "../../src/store/user/userSlice";
 import { selectCartDropdownHidden } from "../../src/store/cart/cart.selector";
+
+import sneakersLogo from "../../public/assets/logo.svg";
+import avatarImg from "../../public/images/image-avatar.png";
+import blancAvatarImg from "../../public/images/image-blanc-avatar.png";
+
+import styles from "./navigation.module.scss";
 
 //TODO image from email data?
 const Navigation = () => {
+  const dispatch: AppDispatchType = useDispatch();
+
+  // GET CATEGORIES
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, []);
+
+  // GET USER
+  useEffect(() => {
+    // if user comes in make user doc(or just get the reference)
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      const getUserSnapshotAndSetUser = async (user: UserType) => {
+        const userSnapshot = await createUserDocFromAuth(user);
+        if (userSnapshot) {
+          dispatch(setUser({ ...userSnapshot.data(), id: userSnapshot.id }));
+        }
+      };
+
+      if (user) {
+        getUserSnapshotAndSetUser(user);
+      } else {
+        // there is no user
+        dispatch(setUser(user));
+      }
+    });
+
+    return unsubscribe;
+
+    // dispatch never changes but react does not know
+  }, []);
+
   const [menuIsVisible, setMenuIsVisible] = useState<boolean>(false);
   const [menuIsHidden, setMenuIsHidden] = useState<boolean>(true);
 
@@ -32,9 +73,7 @@ const Navigation = () => {
 
   const btnRef = React.createRef<HTMLButtonElement>();
 
-  const userImgSrc = currentUser
-    ? "../../public/images/image-avatar.png"
-    : "../../public/images/image-blanc-avatar.png";
+  // const userImgSrc = currentUser ? avatarImg : blancAvatarImg;
 
   return (
     <Fragment>
@@ -49,11 +88,8 @@ const Navigation = () => {
         />
 
         <Link href="/" className="logo-link">
-          <Image
-            src="../../public/assets/logo.svg"
-            className="logo"
-            alt="Sneakers home"
-          />
+          sneakers
+          {/* <Image src={sneakersLogo} className="logo" alt="Sneakers home" /> */}
         </Link>
 
         <nav
@@ -118,11 +154,12 @@ const Navigation = () => {
 
             <li>
               <Link href="/user">
-                <Image
+                {/* <Image
                   src={userImgSrc}
                   className={`user ${currentUser ? "" : "user--blanc"}`}
                   alt="User profile"
-                />
+                /> */}
+                user
                 {/* <img src={currentUser ? user : blancUser} /> */}
               </Link>
             </li>

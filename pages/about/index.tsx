@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import sneakersImg from "../../public/images/image-sneakers-3d.png"
+
 import "./about.styles.scss";
 
 const About = () => {
@@ -13,7 +15,8 @@ const About = () => {
           <p className="about__text--accent">That's it.</p>
         </div>
         <Image
-          src="../../public/images/image-sneakers-3d.png"
+        
+          src={sneakersImg}
           alt="sneakers 3d"
         />
       </div>

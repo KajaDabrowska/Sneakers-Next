@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 
-import "./image-carousel.styles.scss";
+import prevIcon from "../../public/assets/icon-previous.svg";
+import nextIcon from "../../public/assets/icon-next.svg";
+
+import styles from "./image-carousel.module.scss";
 
 type Props = {
   imageUrl: string;
@@ -20,7 +23,7 @@ const ImageCarousel = ({
   const [carouselIndex, setCarouselIndex] = useState(0);
   const CAROUSEL_LENGTH = 3; // 4 imgs
 
-  const modalStyles = isModal ? "isModal" : "";
+  const modalStyles = isModal ? styles.isModal : "";
 
   const prevImg = () => {
     if (carouselIndex !== 0) {
@@ -44,17 +47,16 @@ const ImageCarousel = ({
   const maxWidthMediaQuery = 850;
   const size = useWindowSize();
 
+  //FIXME classes
   return (
-    <div className="image-carousel">
-      <div
-        className={`item-page__image-container image-container ${modalStyles}`}
-      >
+    <div className={styles.imageCarousel}>
+      <div className={`${styles.container} ${modalStyles}`}>
         <button
           onClick={prevImg}
           className="image-container__btn image-container__btn--prev"
         >
           <Image
-            src="../../public/assets/icon-previous.svg"
+            src={prevIcon}
             className="image-container__icon image-container__icon--prev"
             alt=""
           />
@@ -87,7 +89,7 @@ const ImageCarousel = ({
           className="image-container__btn  image-container__btn--next"
         >
           <Image
-            src="../../public/assets/icon-next.svg"
+            src={nextIcon}
             className="image-container__icon image-container__icon--next"
             alt=""
           />

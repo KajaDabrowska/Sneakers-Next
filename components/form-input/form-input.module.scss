@@ -4,7 +4,7 @@
   transform: scale(0.9);
 }
 
-.form-input {
+.container {
   position: relative;
 
   // margin-inline: auto;
@@ -24,7 +24,7 @@
     }
   }
 
-  .labels-input {
+  .input {
     z-index: 200;
     position: relative;
     width: 100%;

@@ -4,7 +4,9 @@ import Image from "next/image";
 
 import { deleteItemFromCart } from "../../src/store/cart/cartSlice";
 
-import "./delete-icon.styles.scss";
+import deleteIcon from "../../public/assets/icon-delete.svg";
+
+import styles from "./delete-icon.module.scss";
 
 type Props = {
   itemToDelete: ItemType;
@@ -18,10 +20,10 @@ const DeleteIcon = ({ itemToDelete }: Props) => {
   };
 
   return (
-    <button className="delete-icon-btn" onClick={deleteItemHandler}>
+    <button className={styles.btn} onClick={deleteItemHandler}>
       <Image
-        src="../../public/assets/icon-delete.svg"
-        className="delete-icon-btn__icon"
+        src={deleteIcon}
+        className={styles.icon}
         alt="Delete item from cart"
       />
     </button>

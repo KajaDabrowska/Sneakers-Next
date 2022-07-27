@@ -11,8 +11,10 @@ import {
 } from "../../src/store/cart/cartSlice";
 
 import DeleteIcon from "../delete-icon/delete-icon.component";
+import minusIcon from "../../public/assets/icon-minus.svg";
+import plusIcon from "../../public/assets/icon-plus.svg";
 
-import "./checkout-item.styles.scss";
+import styles from "./checkout-item.module.scss";
 
 type Props = {
   item: ItemType;
@@ -35,23 +37,23 @@ const CheckoutItem = ({ item }: Props) => {
   };
 
   return (
-    <div className="checkout-item">
-      <li className="checkout-item__item item">
-        <Link className="item__img-link" href={`/product-${id}`}>
+    <div className={styles.checkoutItem}>
+      <li className={styles.item}>
+        <Link href={`/product-${id}`}>
           <span className="sr-only">{name} page</span>
-          <img className="item__image" src={imageUrl} alt="" />
+          <img className={styles.image} src={imageUrl} alt="" />
         </Link>
-        <div className="checkout-item__flex-container">
-          <div className="item__description">
+        <div className={styles.flexContainer}>
+          <div className={styles.description}>
             <span>{name}</span>
             <p>
-              <span className="item__price-per-one">
+              <span>
                 ${priceCurrent}.00
                 {quantity > 1 ? (
                   <Fragment>
-                    <span className="item__x-sign">&nbsp;x&nbsp;</span>
-                    <span className="item__amount">{quantity}&nbsp;&nbsp;</span>
-                    <span className="item__full-price">
+                    <span className={styles.xSign}>&nbsp;x&nbsp;</span>
+                    <span>{quantity}&nbsp;&nbsp;</span>
+                    <span className={styles.fullPrice}>
                       ${itemTotalPrice}.00
                     </span>
                   </Fragment>
@@ -62,36 +64,22 @@ const CheckoutItem = ({ item }: Props) => {
             </p>
           </div>
 
-          <div className="checkout-item__counter counter">
-            <button
-              onClick={handleItemQuantityDecrease}
-              className="counter__btn counter__btn--minus"
-            >
-              <Image
-                src="../../public/assets/icon-minus.svg"
-                className="counter__icon"
-                alt="Decrease item count"
-              />
+          <div className={styles.counter}>
+            <button onClick={handleItemQuantityDecrease} className={styles.btn}>
+              <Image src={minusIcon} alt="Decrease item count" />
             </button>
 
-            <span className="counter__count" aria-live="polite">
+            <span className={styles.count} aria-live="polite">
               <span className="sr-only">Item count</span>
               {quantity}
             </span>
 
-            <button
-              onClick={handleItemQuantityIncrease}
-              className="counter__btn counter__btn--plus"
-            >
-              <Image
-                src="../../public/assets/icon-plus.svg"
-                className="counter__icon"
-                alt="Increase item count"
-              />
+            <button onClick={handleItemQuantityIncrease} className={styles.btn}>
+              <Image src={plusIcon} alt="Increase item count" />
             </button>
           </div>
         </div>
-        <div className="item__delete">
+        <div className={styles.delete}>
           <DeleteIcon itemToDelete={item} />
         </div>
       </li>

@@ -9,6 +9,10 @@ import FormInput from "../../components/form-input/form-input.component";
 import Button from "../../components/button/button.component";
 import MapComponent from "../../components/map/map.component";
 
+import phoneIcon from "../../assets/icon-phone.svg";
+import mailIcon from "../../assets/icon-mail.svg";
+import mapIcon from "../../assets/icon-map.svg";
+
 import "./contact.styles.scss";
 
 type FormFields = {
@@ -124,25 +128,16 @@ const Contact = () => {
 
             <div className="info-box__contact">
               <div className="contact__tel contact__icon-and-info">
-                <Image
-                  src="../../assets/icon-phone.svg"
-                  className="contact__icon"
-                />
+                <Image src={phoneIcon} className="contact__icon" />
 
                 <p>925-839-2605</p>
               </div>
               <div className="contact__email contact__icon-and-info">
-                <Image
-                  src="../../assets/icon-mail.svg"
-                  className="contact__icon"
-                />
+                <Image src={mailIcon} className="contact__icon" />
                 <p>contact@sneakers.com</p>
               </div>
               <div className="contact__street contact__icon-and-info">
-                <Image
-                  src="../../assets/icon-map.svg"
-                  className="contact__icon"
-                />
+                <Image src={mapIcon} className="contact__icon" />
 
                 <p>4001 Pacheco Blvd, Martinez, CA 94553</p>
               </div>

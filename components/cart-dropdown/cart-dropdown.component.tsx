@@ -14,7 +14,7 @@ import { AddBtnContext } from "../../src/contexts/add-btn-context";
 import Button from "../button/button.component";
 import CartItem from "../cart-item/cart-item.component";
 
-import "./cart-dropdown.styles.scss";
+import styles from "./cart-dropdown.module.scss";
 
 type Props = {
   cartIconToggleRef: React.RefObject<HTMLButtonElement>;
@@ -47,7 +47,7 @@ const CartDropdown = ({ cartIconToggleRef }: Props) => {
   }, []);
 
   return (
-    <div className="cart-dropdown" ref={cartDropdownRef}>
+    <div className={styles.cartDropdown} ref={cartDropdownRef}>
       <h2 className="cart-dropdown__title">Cart</h2>
 
       <div className="cart-dropdown__list-btn-container">
