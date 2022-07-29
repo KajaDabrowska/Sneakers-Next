@@ -1,0 +1,23 @@
+.btn {
+  --bg-col: var(--clr-prim);
+
+  cursor: pointer;
+  background-color: hsl(var(--bg-col));
+  color: hsl(var(--clr-white));
+  font-weight: var(--ff-w-b);
+  border: 1px solid hsl(var(--bg-col), 0.822);
+  border-radius: 1.3rem;
+  padding: 1.5rem 0;
+  width: 100%;
+  // max-height: 8rem;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    box-shadow: 0px 24px 30px -19px hsl(var(--bg-col), 0.55);
+  }
+
+  &.google {
+    --clr--google: 217, 89%, 61%;
+    --bg-col: var(--clr--google);
+  }
+}

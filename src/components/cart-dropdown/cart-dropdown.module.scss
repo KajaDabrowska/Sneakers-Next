@@ -1,0 +1,35 @@
+.cartDropdown {
+  z-index: 1000;
+  position: absolute;
+  top: 5.3rem;
+  right: -1.8rem;
+  background-color: hsl(var(--clr-white));
+  width: min(37rem, 94vw);
+  border-radius: 1rem;
+
+  box-shadow: 1px 18px 36px -8px hsl(var(--clr-gray--300), 0.5);
+
+  &__empty {
+    color: hsl(var(--clr-gray--300));
+    font-weight: var(--ff-w-b);
+    text-align: center;
+    padding-block: 4.5rem;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: var(--ff-w-b);
+    text-align: left;
+    padding: 1.5rem 2rem;
+    border-bottom: var(--border-b-prim);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__list-btn-container {
+    padding: 2rem 2rem 2.5rem 2rem;
+  }
+}

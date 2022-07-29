@@ -1,0 +1,15 @@
+.btn {
+  cursor: pointer;
+  // width: 1.2rem;
+  height: 1rem;
+  background-color: transparent;
+  border: none;
+
+  .icon {
+    width: 1.2rem;
+
+    &:hover {
+      filter: var(--filer-dark);
+    }
+  }
+}

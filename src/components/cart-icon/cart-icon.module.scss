@@ -1,0 +1,32 @@
+.cartIcon {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+
+  .icon {
+    width: 2.2rem;
+  }
+
+  .amount {
+    z-index: 400;
+    font-size: 1rem;
+    font-weight: var(--ff-w-b);
+    position: absolute;
+    top: -0.6rem;
+    right: -0.2rem;
+    background-color: hsl(var(--clr-prim));
+    color: hsl(var(--clr-white));
+    border-radius: 1rem;
+    padding: 0 0.7rem;
+  }
+
+  //TODO filter on when items in cart (NOT ONLY on hover)
+  &:hover &__icon,
+  .active {
+    width: 2.2rem;
+    filter: var(--filer-dark);
+  }
+}

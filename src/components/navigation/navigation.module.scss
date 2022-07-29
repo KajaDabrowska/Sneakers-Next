@@ -1,0 +1,160 @@
+.container {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--container-padding);
+  // padding-inline: var(--container-pad-inline);
+  // padding-bottom: 2rem;
+
+  .logoLink {
+    //FIXMEBUG
+    margin-right: auto;
+    // background-color: red;
+  }
+
+  .logo {
+    width: 13rem;
+  }
+
+  //TODO this is just a messy for now way
+  @media (min-width: 62.5em) {
+    border-bottom: 2px solid hsl(var(--clr-gray--100));
+    padding-block: 4rem 4.5rem;
+    // margin: 0 4rem;
+    margin: 0 var(--container-pad-inline);
+  }
+}
+
+.primaryNav {
+  display: none;
+
+  .mobileBtn {
+    position: absolute;
+    top: 2rem;
+  }
+}
+
+.primaryNav[data-visible="true"] {
+  z-index: 9000;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70vw;
+  height: 100vh;
+  padding: 9rem 2.5rem;
+  text-align: left;
+  font-weight: var(--ff-w-b);
+  background-color: hsl(var(--clr-white));
+  animation: fadeIn 0.3s ease-in-out;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+
+  &::after {
+    z-index: 100;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 70vw;
+    width: 300vw;
+    height: 100vh;
+    background-color: hsl(var(--clr-black), 0.75);
+  }
+}
+
+.secondaryNav {
+  position: relative;
+  margin-left: auto;
+
+  ul {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .user {
+    width: 2.5rem;
+
+    &Blanc {
+      filter: brightness(0) saturate(100%) invert(41%) sepia(5%) saturate(1028%)
+        hue-rotate(178deg) brightness(55%) contrast(87%);
+    }
+
+    &:hover {
+      border-radius: 50%;
+      outline: 2px solid hsl(var(--clr-prim));
+      filter: unset;
+    }
+  }
+}
+
+@media (min-width: 62.5em) {
+  .primaryNav {
+    display: inline-block;
+
+    .list {
+      display: flex;
+      gap: 4rem;
+
+      color: hsl(var(--clr-gray--300));
+    }
+
+    .listItem {
+      position: relative;
+      &:hover {
+        color: hsl(var(--clr-gray--400));
+
+        &::before {
+          content: "";
+          position: absolute;
+          display: inline-block;
+          top: 7.7rem;
+          left: 0;
+          width: 100%;
+          height: 0.4rem;
+          background-color: hsl(var(--clr-prim));
+          animation: fadeInWithoutTransform 0.2s ease-in-out;
+        }
+      }
+    }
+  }
+
+  .secondaryNav {
+    ul {
+      gap: 3rem;
+    }
+
+    .user {
+      width: 4.5rem;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    display: none;
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    display: inline-block;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInWithoutTransform {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  100% {
+    display: inline-block;
+    opacity: 1;
+  }
+}

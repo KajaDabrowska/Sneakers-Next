@@ -1,0 +1,46 @@
+@mixin shrinkLabel {
+  top: 0.2rem;
+  left: 1.5rem;
+  transform: scale(0.9);
+}
+
+.container {
+  position: relative;
+
+  // margin-inline: auto;
+
+  .label {
+    // Index on label and input for better clickability
+    z-index: 100;
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: hsl(var(--clr-gray--300));
+    transition: all 0.2s ease-in-out;
+
+    &.shrink {
+      @include shrinkLabel();
+    }
+  }
+
+  .input {
+    z-index: 200;
+    position: relative;
+    width: 100%;
+    // background-color: hsl(var(--clr-white));
+    background-color: transparent;
+    border: 2px solid hsl(var(--clr-gray--200));
+    border-radius: 0.8rem;
+    padding: 1.8rem 1.5rem 0.5rem 1.5rem;
+
+    &:focus-visible {
+      outline-color: hsl(var(--clr-prim));
+    }
+
+    &:focus ~ .label {
+      @include shrinkLabel();
+      color: hsl(var(--clr-prim));
+    }
+  }
+}

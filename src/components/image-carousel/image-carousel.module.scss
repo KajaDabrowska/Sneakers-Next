@@ -1,0 +1,195 @@
+.imageCarousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+
+  .imageBtn {
+    display: block;
+    cursor: pointer;
+    border: none;
+    border-radius: 1.5rem;
+    width: 100%;
+    padding: 0;
+
+    &:focus-visible {
+      outline-color: hsl(var(--clr-prim));
+    }
+  }
+
+  .image {
+    border-radius: 1.5rem;
+    height: 35rem;
+    width: 100%;
+    object-fit: cover;
+
+    //TODO somehow help the images that need bigger height?
+  }
+
+  .btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: hsl(var(--clr-white));
+    border-radius: 50%;
+    border: none;
+    width: 3.8rem;
+    height: 3.8rem;
+
+    &:hover .image-container__icon,
+    &:focus-visible .image-container__icon,
+    &:active .image-container__icon {
+      filter: invert(74%) sepia(95%) saturate(4360%) hue-rotate(348deg)
+        brightness(104%) contrast(101%);
+    }
+
+    &--prev {
+      left: 1.5rem;
+    }
+
+    &--next {
+      right: 1.5rem;
+    }
+  }
+
+  .icon {
+    position: absolute;
+    width: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &--prev {
+      left: 33%;
+    }
+
+    &--next {
+      right: 38%;
+    }
+  }
+}
+
+.carousel {
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+
+  display: none;
+
+  .imageWrapper {
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    border: none;
+    border-radius: 0.8rem;
+
+    &:focus-visible {
+      outline-offset: -2px;
+      outline: 2px solid hsl(var(--clr-prim));
+    }
+
+    &.active::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      z-index: 2000;
+
+      border-radius: 0.8rem;
+      border: 2px solid hsl(var(--clr-prim));
+    }
+  }
+
+  .image {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 0.8rem;
+
+    &.active {
+      opacity: 0.4;
+    }
+  }
+}
+
+@media (min-width: 62.5em) {
+  .carousel {
+    display: flex;
+  }
+
+  .image-container__image-btn {
+    width: 45rem;
+  }
+
+  .image-container__btn {
+    display: none;
+  }
+}
+
+.dialog {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  // so that the buttons don't get hidden
+  padding: 3rem;
+
+  .closeBtn {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    width: 3.5rem;
+    padding-bottom: 2rem;
+
+    &:focus-visible .dialog__close-icon,
+    &:hover .dialog__close-icon,
+    &:active .dialog__close-icon {
+      filter: brightness(0) saturate(100%) invert(74%) sepia(95%)
+        saturate(4360%) hue-rotate(348deg) brightness(104%) contrast(101%);
+    }
+  }
+}
+
+// hack so i can use display flex on the dialog
+.dialog:not([open]) {
+  display: none;
+}
+
+::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+.isModal {
+  .image-container__image {
+    height: 50rem;
+    width: 60rem;
+  }
+
+  .image-container__btn {
+    display: inline-block;
+    width: 4.5rem;
+    height: 4.5rem;
+
+    &--prev {
+      left: -2.25rem;
+    }
+
+    &--next {
+      right: -2.25rem;
+    }
+  }
+
+  .image-container__icon {
+    width: 1rem;
+
+    &--prev {
+      left: 35%;
+    }
+    &--next {
+      right: 35%;
+    }
+  }
+}
