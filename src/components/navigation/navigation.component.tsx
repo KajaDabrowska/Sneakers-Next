@@ -117,31 +117,28 @@ const Navigation = () => {
 
             <ul className={styles.list}>
               <li className={styles.listItem}>
-                <Link
-                  href="/collections"
-                  onClick={() => setMenuIsVisible(false)}
-                >
-                  Collecions
+                <Link href="/">
+                  <a onClick={() => setMenuIsVisible(false)}>Collecions</a>
                 </Link>
               </li>
               <li className={styles.listItem}>
-                <Link href="/men" onClick={() => setMenuIsVisible(false)}>
-                  Men
+                <Link href="/category/men">
+                  <a onClick={() => setMenuIsVisible(false)}>Men</a>
                 </Link>
               </li>
               <li className={styles.listItem}>
-                <Link href="/women" onClick={() => setMenuIsVisible(false)}>
-                  Women
+                <Link href="/category/women">
+                  <a onClick={() => setMenuIsVisible(false)}>Women</a>
                 </Link>
               </li>
               <li className={styles.listItem}>
-                <Link href="/about" onClick={() => setMenuIsVisible(false)}>
-                  About
+                <Link href="/about">
+                  <a onClick={() => setMenuIsVisible(false)}>About</a>
                 </Link>
               </li>
               <li className={styles.listItem}>
-                <Link href="/contact" onClick={() => setMenuIsVisible(false)}>
-                  Contact
+                <Link href="/contact">
+                  <a onClick={() => setMenuIsVisible(false)}>Contact</a>
                 </Link>
               </li>
             </ul>

@@ -1,0 +1,22 @@
+.collections {
+  &__title {
+    font-size: 4rem;
+    margin-bottom: 3rem;
+  }
+}
+
+.collection {
+  margin-bottom: 4rem;
+
+  &__title {
+    font-size: 3rem;
+    display: inline-block;
+    padding-inline: 1rem;
+  }
+
+  &__products {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,122 @@
+@mixin shrinkLabel {
+  top: 0.2rem;
+  left: 1rem;
+  transform: scale(0.9);
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+
+  &__title-and-text {
+    margin-bottom: 4rem;
+  }
+
+  &__title {
+    font-weight: var(--ff-w-b);
+  }
+
+  &__main-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+  }
+
+  /* ------------------------ */
+  /* --------- FORM --------- */
+  /* ------------------------ */
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 30rem;
+  }
+
+  &__textarea-and-label {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  // Message input
+  &__message {
+    // Disable textarea resize
+    resize: none;
+
+    z-index: 200;
+    background-color: transparent;
+    border: 2px solid hsl(var(--clr-gray--200));
+    border-radius: 0.8rem;
+    padding: 1.8rem 1.5rem 0.5rem 1.5rem;
+
+    &:focus-visible {
+      outline-color: hsl(var(--clr-prim));
+    }
+
+    &:focus ~ .contact__message-label {
+      @include shrinkLabel();
+      color: hsl(var(--clr-prim));
+    }
+  }
+
+  &__message-label {
+    // Index on label and input for better clickability
+    z-index: 100;
+    position: absolute;
+    left: 1.5rem;
+    top: 1.5rem;
+
+    color: hsl(var(--clr-gray--300));
+    transition: all 0.2s ease-in-out;
+
+    &.shrink {
+      @include shrinkLabel();
+    }
+  }
+
+  /* ------------------------ */
+  /* ----- CONTACT INFO ----- */
+  /* ------------------------ */
+  &__info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .info-box {
+    // &__title {
+    //   font-weight: var(--ff-w-b);
+    //   margin-bottom: 1rem;
+    // }
+
+    &__text {
+      max-width: 38ch;
+    }
+
+    &__contact {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+  }
+
+  &__icon {
+    width: 2rem;
+  }
+
+  &__icon-and-info {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  &__map {
+    height: 25rem;
+    width: 25rem;
+    display: inline-block;
+    margin-top: 1rem;
+
+    .map-component {
+      border-radius: 1rem;
+    }
+  }
+}

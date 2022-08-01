@@ -61,7 +61,7 @@ const CartDropdown = ({ cartIconToggleRef }: Props) => {
               ))}
             </ul>
 
-            <Link href="/cart">
+            <Link href="/cart" passHref>
               {/*The btn type is responsible for bringing focus to it once dropdown is visible  */}
               <Button btnType="checkout">Checkout</Button>
             </Link>

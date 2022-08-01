@@ -1,0 +1,22 @@
+.cart {
+  max-width: 50rem;
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+
+    margin-bottom: 2.5rem;
+  }
+
+  &__total {
+    font-size: 2rem;
+    font-weight: 400;
+
+    display: flex;
+    justify-content: space-between;
+
+    &--price {
+      font-weight: 700;
+    }
+  }
+}

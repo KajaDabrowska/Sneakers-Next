@@ -10,7 +10,7 @@ import {
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
-import "./sign-in.styles.scss";
+import styles from "./sign-in.module.scss";
 
 type DefaultFormFields = {
   email: string;

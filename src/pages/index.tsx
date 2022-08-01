@@ -1,9 +1,18 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-// import styles from "../styles/Home.module.css";
+import { useEffect, useState } from "react";
+
+import Collections from "../components/collections";
 
 const IndexPage: NextPage = () => {
+  // This is a workaround for a hydration error
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <div>
       <Head>
@@ -12,9 +21,7 @@ const IndexPage: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1>hi</h1>
-      </main>
+      <main>{mounted && <Collections />}</main>
     </div>
   );
 };
