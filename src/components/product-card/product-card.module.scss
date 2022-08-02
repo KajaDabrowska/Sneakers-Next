@@ -3,39 +3,40 @@
     border-radius: 1rem;
     outline: 2px solid hsl(var(--clr-prim));
 
-    .product__price {
+    .price {
       transform: translateY(-35%);
     }
   }
 
-  &__link {
+  .link {
     &:focus-visible {
       outline: none;
     }
   }
 
-  &__image {
+  .imageWrapper > span {
     width: 25rem;
     border-radius: 1rem;
 
     &:hover {
       outline: 1px solid hsl(var(--clr-prim));
 
-      ~ .product__desc .product__price {
+      ~ .desc .price {
+        // background-color: red;
         transform: translateY(-35%);
       }
     }
   }
 
-  &__desc {
+  .desc {
     position: relative;
   }
 
-  // &__name {
+  // .name {
   //   font-weight: var(--ff-w-b);
   // }
 
-  &__price {
+  .price {
     z-index: 110;
     display: inline-block;
     position: absolute;

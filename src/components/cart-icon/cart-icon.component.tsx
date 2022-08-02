@@ -28,12 +28,9 @@ const CartIcon = React.forwardRef<HTMLButtonElement>((props, ref) => {
 
   return (
     <button className={styles.cartIcon} onClick={toggleCartHidden} ref={ref}>
-      <Image
-        layout="fill"
-        src={cartIcon}
-        className={`${styles.icon} ${cartCount ? styles.active : ""}`}
-        alt=""
-      />
+      <div className={`${styles.icon} ${cartCount ? styles.active : ""}`}>
+        <Image layout="fill" src={cartIcon} alt="" />
+      </div>
       {cartCount ? <span className={styles.amount}>{cartCount}</span> : ""}
     </button>
   );

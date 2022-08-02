@@ -9,22 +9,22 @@ import styles from "./collections.module.scss";
 
 const Collections = () => {
   const categories = useSelector(selectCategories);
-
+  console.log("categories", categories);
   return (
-    <main id="main" className="container collections">
-      <h1 className="collections__title">Collections</h1>
+    <main id="main" className={`container ${styles.collections}`}>
+      <h1 className={styles.title}>Collections</h1>
 
       {Object.keys(categories).map((title) => (
-        <div key={title} className="collections__collection collection">
+        <div key={title} className={styles.collection}>
           <h2>
             <Link href={`/${title}`}>
-              <span className="collection__title">
+              <span className={styles.title}>
                 {title.charAt(0).toUpperCase() + title.slice(1)}
               </span>
             </Link>
           </h2>
 
-          <div className="collection__products ">
+          <div className={styles.products}>
             {categories[title]
               .filter((_, idx) => idx < 4)
               .map((product) => (

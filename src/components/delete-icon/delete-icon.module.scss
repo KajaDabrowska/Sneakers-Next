@@ -5,11 +5,10 @@
   background-color: transparent;
   border: none;
 
-  .icon {
+  .icon > span {
     width: 1.2rem;
-
-    &:hover {
-      filter: var(--filer-dark);
-    }
+  }
+  .icon:hover > span {
+    filter: var(--filer-dark);
   }
 }

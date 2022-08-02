@@ -9,27 +9,45 @@ type Props = {
 };
 //FIXME how to use img when img is from url link
 const ProductCard = ({ product }: Props) => {
-  const { name, imageUrl, id } = product;
+  const { name, imageUrl, id, brand, description, images, hasMultiplePrices } =
+    product;
   const price = product.price.current;
 
   return (
-    <div className="product product-container">
-      <Link href={`/product-${id}`} className="product__link">
-        <figure className="product__figure">
-          {/* <img src={imageUrl} alt="" className="product__image" /> */}
-          <Image
-            src={imageUrl}
-            alt=""
-            className="product__image"
-            layout="intrinsic"
-            //TODO make the layout fill once u fix the classes for CSS module
-            width={250}
-            height={250}
-          />
+    <div className={styles.product}>
+      <Link
+        href={{
+          pathname: `/product/${id}`,
 
-          <figcaption className="product__desc">
-            <span className="product__name">{name}</span>
-            <span className="product__price">${price}.00</span>
+          query: {
+            name: name,
+            description: description,
+            imageUrl: imageUrl,
+            images: images,
+            brand: brand,
+            hasMultiplePrices: hasMultiplePrices,
+          },
+        }}
+        className={styles.link}
+      >
+        <figure>
+          {/* <img src={imageUrl} alt="" className="product__image" /> */}
+          <div className={styles.imageWrapper}>
+            <Image
+              src={imageUrl}
+              alt=""
+              // className={styles.image}
+              // layout="fill"
+              layout="intrinsic"
+              //TODO make the layout fill once u fix the classes for CSS module
+              width={250}
+              height={250}
+            />
+          </div>
+
+          <figcaption className={styles.desc}>
+            <span>{name}</span>
+            <span className={styles.price}>${price}.00</span>
           </figcaption>
         </figure>
       </Link>

@@ -21,11 +21,9 @@ const DeleteIcon = ({ itemToDelete }: Props) => {
 
   return (
     <button className={styles.btn} onClick={deleteItemHandler}>
-      <Image
-        src={deleteIcon}
-        className={styles.icon}
-        alt="Delete item from cart"
-      />
+      <div className={styles.icon}>
+        <Image src={deleteIcon} alt="Delete item from cart" />
+      </div>
     </button>
   );
 };

@@ -48,11 +48,11 @@
         brightness(104%) contrast(101%);
     }
 
-    &--prev {
+    .btnPrev {
       left: 1.5rem;
     }
 
-    &--next {
+    .btnNext {
       right: 1.5rem;
     }
   }
@@ -120,11 +120,11 @@
     display: flex;
   }
 
-  .image-container__image-btn {
+  .image-btn {
     width: 45rem;
   }
 
-  .image-container__btn {
+  .btn {
     display: none;
   }
 }
@@ -159,25 +159,26 @@
   display: none;
 }
 
-::backdrop {
-  background-color: rgba(0, 0, 0, 0.75);
-}
+//FIXME
+// ::backdrop {
+//   background-color: rgba(0, 0, 0, 0.75);
+// }
 .isModal {
-  .image-container__image {
+  .image {
     height: 50rem;
     width: 60rem;
   }
 
-  .image-container__btn {
+  .imageBtn {
     display: inline-block;
     width: 4.5rem;
     height: 4.5rem;
 
-    &--prev {
+    .imagePrev {
       left: -2.25rem;
     }
 
-    &--next {
+    .imageNext {
       right: -2.25rem;
     }
   }

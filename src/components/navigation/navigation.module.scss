@@ -77,19 +77,19 @@
     align-items: center;
   }
 
-  .user {
+  //FIXME prettier way of writin this?
+  .user > span {
     width: 2.5rem;
+  }
+  .userBlanc > span {
+    filter: brightness(0) saturate(100%) invert(41%) sepia(5%) saturate(1028%)
+      hue-rotate(178deg) brightness(55%) contrast(87%);
+  }
 
-    &Blanc {
-      filter: brightness(0) saturate(100%) invert(41%) sepia(5%) saturate(1028%)
-        hue-rotate(178deg) brightness(55%) contrast(87%);
-    }
-
-    &:hover {
-      border-radius: 50%;
-      outline: 2px solid hsl(var(--clr-prim));
-      filter: unset;
-    }
+  .user:hover > span {
+    border-radius: 50%;
+    outline: 2px solid hsl(var(--clr-prim));
+    filter: unset;
   }
 }
 
@@ -129,7 +129,7 @@
       gap: 3rem;
     }
 
-    .user {
+    .user > span {
       width: 4.5rem;
     }
   }

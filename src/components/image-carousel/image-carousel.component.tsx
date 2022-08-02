@@ -51,13 +51,11 @@ const ImageCarousel = ({
   return (
     <div className={styles.imageCarousel}>
       <div className={`${styles.container} ${modalStyles}`}>
-        <button
-          onClick={prevImg}
-          className="image-container__btn image-container__btn--prev"
-        >
+        <button onClick={prevImg} className={`${styles.btn} ${styles.btnPrev}`}>
           <Image
             src={prevIcon}
-            className="image-container__icon image-container__icon--prev"
+            className={`${styles.icon} ${styles.btnPrev}`}
+            // className="image-container__icon image-container__icon--prev"
             alt=""
           />
 

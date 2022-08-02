@@ -93,11 +93,9 @@ const Navigation = () => {
           //FIXME please margin omg
           // className={styles.logoLink}
         >
-          <Image
-            src={sneakersLogo}
-            className={`${styles.logo} ${styles.logoLink}`}
-            alt="Sneakers home"
-          />
+          <div className={`${styles.logo} ${styles.logoLink}`}>
+            <Image src={sneakersLogo} alt="Sneakers home" />
+          </div>
         </Link>
 
         <nav
@@ -158,13 +156,16 @@ const Navigation = () => {
 
             <li>
               <Link href="/user">
-                <Image
-                  src={currentUser ? avatarImg : blancAvatarImg}
+                <div
                   className={`${styles.user} ${
                     currentUser ? "" : styles.userBlanc
                   }`}
-                  alt="User profile"
-                />
+                >
+                  <Image
+                    src={currentUser ? avatarImg : blancAvatarImg}
+                    alt="User profile"
+                  />
+                </div>
               </Link>
             </li>
           </ul>

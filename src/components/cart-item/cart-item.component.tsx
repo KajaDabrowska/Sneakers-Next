@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { ItemType } from "../../types/types";
 
@@ -22,7 +23,9 @@ const CartItem = ({ cartItem }: Props) => {
     <li className={styles.item}>
       {/*FIXME i should be a next js [] route  */}
       <Link className={styles.imgAndDesc} href={`/product-${cartItem.id}`}>
-        <img className={styles.image} src={imageUrl} alt="" />
+        <div className={styles.image}>
+          <Image src={imageUrl} alt="" />
+        </div>
 
         <div className={styles.description}>
           <span className={styles.name}>{name}</span>

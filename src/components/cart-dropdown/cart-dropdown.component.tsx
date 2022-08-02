@@ -48,14 +48,14 @@ const CartDropdown = ({ cartIconToggleRef }: Props) => {
 
   return (
     <div className={styles.cartDropdown} ref={cartDropdownRef}>
-      <h2 className="cart-dropdown__title">Cart</h2>
+      <h2 className={styles.title}>Cart</h2>
 
-      <div className="cart-dropdown__list-btn-container">
+      <div className={styles.listBtnContainer}>
         {!cartCount ? (
-          <p className="cart-dropdown__empty">Your cart is empty.</p>
+          <p className={styles.empty}>Your cart is empty.</p>
         ) : (
           <Fragment>
-            <ul className="cart-dropdown__list">
+            <ul className={styles.list}>
               {cartItems.map((item) => (
                 <CartItem key={item.id} cartItem={item} />
               ))}
