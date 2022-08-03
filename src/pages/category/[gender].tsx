@@ -15,13 +15,13 @@ const Category = () => {
 
   return (
     <main id="main" className="container">
-      <h2 className="category__title">
+      <h2 className={styles.title}>
         {gender &&
           typeof gender === "string" &&
           gender.charAt(0).toUpperCase() + gender?.slice(1)}
       </h2>
 
-      <div className="category__products grid-container">
+      <div className=" grid-container">
         {gender &&
           typeof gender === "string" &&
           categories[gender].map((product) => (

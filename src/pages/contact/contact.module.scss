@@ -8,15 +8,15 @@
   display: flex;
   flex-direction: column;
 
-  &__title-and-text {
+  .titleAndText {
     margin-bottom: 4rem;
   }
 
-  &__title {
+  .title {
     font-weight: var(--ff-w-b);
   }
 
-  &__main-box {
+  .mainBox {
     display: flex;
     flex-wrap: wrap;
     gap: 5rem;
@@ -25,21 +25,21 @@
   /* ------------------------ */
   /* --------- FORM --------- */
   /* ------------------------ */
-  &__form {
+  .form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     max-width: 30rem;
   }
 
-  &__textarea-and-label {
+  .textareaAndLabel {
     display: flex;
     flex-direction: column;
     position: relative;
   }
 
   // Message input
-  &__message {
+  .message {
     // Disable textarea resize
     resize: none;
 
@@ -53,13 +53,13 @@
       outline-color: hsl(var(--clr-prim));
     }
 
-    &:focus ~ .contact__message-label {
+    &:focus ~ .messageLabel {
       @include shrinkLabel();
       color: hsl(var(--clr-prim));
     }
   }
 
-  &__message-label {
+  .messageLabel {
     // Index on label and input for better clickability
     z-index: 100;
     position: absolute;
@@ -77,46 +77,43 @@
   /* ------------------------ */
   /* ----- CONTACT INFO ----- */
   /* ------------------------ */
-  &__info-box {
+  .infoBox {
     display: flex;
     flex-direction: column;
     gap: 3rem;
   }
 
-  .info-box {
-    // &__title {
+  .infoBox {
+    // .title {
     //   font-weight: var(--ff-w-b);
     //   margin-bottom: 1rem;
     // }
 
-    &__text {
+    .text {
       max-width: 38ch;
     }
 
-    &__contact {
+    .contact {
       display: flex;
       flex-direction: column;
       gap: 3rem;
     }
   }
 
-  &__icon {
-    width: 2rem;
+  .icon > span {
+    width: 2rem !important;
   }
 
-  &__icon-and-info {
+  .iconAndInfo {
     display: flex;
     gap: 1.5rem;
   }
+}
 
-  &__map {
-    height: 25rem;
-    width: 25rem;
-    display: inline-block;
-    margin-top: 1rem;
-
-    .map-component {
-      border-radius: 1rem;
-    }
-  }
+.map {
+  background-color: rgb(230, 229, 229);
+  height: 25rem;
+  width: 25rem;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
 }

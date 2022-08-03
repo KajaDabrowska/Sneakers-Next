@@ -1,4 +1,4 @@
-.container--sign-up {
+.signUp {
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -9,14 +9,14 @@
   }
 }
 
-.sing-up-form {
+.singUpForm {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   max-width: 35rem;
   // margin-inline: auto;
 
-  &__btn {
+  .btn {
     margin-top: 1.5rem;
   }
 }

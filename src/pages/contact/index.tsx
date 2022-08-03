@@ -1,13 +1,9 @@
 import Image from "next/image";
-import { useState } from "react";
-
-// import { ReactComponent as MailIcon } from "../../assets/icon-mail.svg";
-// import { ReactComponent as MapPointerIcon } from "../../assets/icon-map.svg";
-// import { ReactComponent as PhoneIcon } from "../../assets/icon-phone.svg";
+import dynamic from "next/dynamic";
+import { useState, useMemo } from "react";
 
 import FormInput from "../../components/form-input/form-input.component";
 import Button from "../../components/button/button.component";
-import MapComponent from "../../components/map/map.component";
 
 import phoneIcon from "../../public/assets/icon-phone.svg";
 import mailIcon from "../../public/assets/icon-mail.svg";
@@ -49,22 +45,34 @@ const Contact = () => {
     // console.log("I handle submit");
   };
 
+  // I do this because an external dependency( Leaflet) relies on a browser API (window).
+  // otherwise on page reload we will get an error even if i put a guard in this component
+  // (like this:) typeof window !== "undefined"
+  const Map = useMemo(
+    () =>
+      dynamic(() => import("../../components/map/map.component"), {
+        loading: () => <p>Map is loading</p>,
+        ssr: false,
+      }),
+    []
+  );
+
   return (
     <main id="main" className="container">
-      <div className="contact--container contact ">
-        <div className="contact__title-and-text">
-          <h1 className="contact__title">
+      <div className={styles.contact}>
+        <div className={styles.titleAndText}>
+          <h1 className={styles.title}>
             {/* Contact Us! */}
             Get in touch!
           </h1>
-          <p className="contact__p">
+          <p>
             Fill up the form and our Team will get back to you withing 24 hours.
           </p>
         </div>
 
-        <div className="contact__main-box">
+        <div className={styles.mainBox}>
           <form
-            className="contact__form"
+            className={styles.form}
             onSubmit={handleSubmit}
             id="contact-form"
           >
@@ -97,9 +105,9 @@ const Contact = () => {
               value={phone}
               id="contact"
             />
-            <div className="contact__textarea-and-label">
+            <div className={styles.textareaAndLabel}>
               <textarea
-                className="contact__message"
+                className={styles.message}
                 name="message"
                 id="contact-message"
                 onChange={handleChange}
@@ -110,9 +118,10 @@ const Contact = () => {
                 form="contact-form"
                 value={message}
               ></textarea>
+
               <label
-                className={`contact__message-label ${
-                  message?.length ? "shrink" : ""
+                className={`${styles.messageLabel} ${
+                  message?.length ? styles.shrink : ""
                 } `}
                 htmlFor="contact-message"
               >
@@ -123,32 +132,36 @@ const Contact = () => {
             <Button type="submit">Send Message</Button>
           </form>
 
-          <div className="contact__info-box info-box">
-            <h2 className="info-box__title">Contact Information</h2>
+          <div className={styles.infoBox}>
+            <h2>Contact Information</h2>
 
-            <div className="info-box__contact">
-              <div className="contact__tel contact__icon-and-info">
-                <Image
-                  src={phoneIcon}
-                  className="contact__icon"
-                  alt="phone number"
-                />
+            <div className={styles.contact}>
+              <div className={styles.iconAndInfo}>
+                <div className={styles.icon}>
+                  <Image
+                    src={phoneIcon}
+                    className={styles.icon}
+                    alt="phone number"
+                  />
+                </div>
 
                 <p>925-839-2605</p>
               </div>
-              <div className="contact__email contact__icon-and-info">
-                <Image src={mailIcon} className="contact__icon" alt="email" />
+              <div className={styles.iconAndInfo}>
+                <div className={styles.icon}>
+                  <Image src={mailIcon} alt="email" />
+                </div>
                 <p>contact@sneakers.com</p>
               </div>
-              <div className="contact__street contact__icon-and-info">
-                <Image src={mapIcon} className="contact__icon" alt="address" />
+              <div className={styles.iconAndInfo}>
+                <div className={styles.icon}>
+                  <Image src={mapIcon} className={styles.icon} alt="address" />
+                </div>
 
                 <p>4001 Pacheco Blvd, Martinez, CA 94553</p>
               </div>
-              <div className="contact__map" id="map">
-                {/* FIXME map does not work cuz it uses window */}
-                {typeof window !== "undefined" && <MapComponent />}
-                {/* <MapComponent /> */}
+              <div className={styles.map} id="map">
+                <Map />
               </div>
             </div>
           </div>

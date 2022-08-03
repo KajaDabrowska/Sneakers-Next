@@ -23,23 +23,23 @@ import styles from "./item.module.scss";
 /* This components is not typed with TS because of this issue (https://github.com/microsoft/TypeScript/issues/48267) */
 /* That is, at the time of writing this, TS does not support the <HTMLDialogElement> so with TS i would have to use a lot of @ts-ignores for this to work or use a completely different approach of writing a modal */
 
-export const getStaticProps = async (context) => {
-  console.log("context.query", context.query);
-  // returns { id: episode.itunes.episode, title: episode.title}
+// export const getStaticProps = async (context) => {
+//   console.log("context.query", context.query);
+//   // returns { id: episode.itunes.episode, title: episode.title}
 
-  //you can make DB queries using the data in context.query
-  return {
-    props: {
-      id: context.query.id, //pass it to the page props
-    },
-  };
-};
+//   //you can make DB queries using the data in context.query
+//   return {
+//     props: {
+//       id: context.query.id, //pass it to the page props
+//     },
+//   };
+// };
 
 //TODO? click outside to close modal?
 const ItemPage = ({ props }) => {
   //FIXME
   // const { ref } = useContext(AddBtnContext);
-  console.log("props", props);
+  // console.log("props", props);
   const router = useRouter();
   const { id } = router.query;
   console.log(router.query);
@@ -88,8 +88,8 @@ const ItemPage = ({ props }) => {
   };
 
   return (
-    <main id="main" className="item-page-container">
-      <div className="item-page">
+    <main id="main" className={styles.container}>
+      <div className={styles.itemPage}>
         <dialog ref={dialogRef} className="dialog">
           <button className="dialog__close-btn" onClick={toggleModal}>
             {/* <img

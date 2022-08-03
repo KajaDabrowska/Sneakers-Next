@@ -21,29 +21,32 @@ const CartItem = ({ cartItem }: Props) => {
   //TODO how does a screen reader announce this type of big ass link
   return (
     <li className={styles.item}>
-      {/*FIXME i should be a next js [] route  */}
-      <Link className={styles.imgAndDesc} href={`/product-${cartItem.id}`}>
-        <div className={styles.image}>
-          <Image src={imageUrl} alt="" />
-        </div>
+      <Link href={`/product-${cartItem.id}`}>
+        <a className={styles.imgAndDesc}>
+          <div className={styles.image}>
+            <Image src={imageUrl} alt="" />
+          </div>
 
-        <div className={styles.description}>
-          <span className={styles.name}>{name}</span>
-          <p>
-            <span>
-              ${currentPrice}.00
-              {quantity > 1 ? (
-                <Fragment>
-                  <span className={styles.xSign}>&nbsp;x&nbsp;</span>
-                  <span>{quantity}&nbsp;&nbsp;</span>
-                  <span className={styles.fullPrice}>${itemTotalPrice}.00</span>
-                </Fragment>
-              ) : (
-                ""
-              )}
-            </span>
-          </p>
-        </div>
+          <div className={styles.description}>
+            <span className={styles.name}>{name}</span>
+            <p>
+              <span>
+                ${currentPrice}.00
+                {quantity > 1 ? (
+                  <Fragment>
+                    <span className={styles.xSign}>&nbsp;x&nbsp;</span>
+                    <span>{quantity}&nbsp;&nbsp;</span>
+                    <span className={styles.fullPrice}>
+                      ${itemTotalPrice}.00
+                    </span>
+                  </Fragment>
+                ) : (
+                  ""
+                )}
+              </span>
+            </p>
+          </div>
+        </a>
       </Link>
 
       <div className={styles.delete}>

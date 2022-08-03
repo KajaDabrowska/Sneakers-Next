@@ -3,12 +3,12 @@
   flex-direction: column;
   gap: 2rem;
 
-  .sign-up__link {
+  .signUpLink {
     color: hsl(var(--clr-prim));
     font-weight: var(--ff-w-b);
   }
 
-  &__sign-out-btn {
+  .signOutBtn {
     margin-top: 5.5rem;
   }
 }

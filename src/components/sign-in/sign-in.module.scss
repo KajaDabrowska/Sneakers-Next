@@ -1,4 +1,4 @@
-.container--sign-in {
+.signIn {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -7,12 +7,12 @@
   .title {
     font-weight: var(--ff-w-b);
   }
-}
 
-.sing-in-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 35rem;
-  // margin-inline: auto;
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 35rem;
+    // margin-inline: auto;
+  }
 }

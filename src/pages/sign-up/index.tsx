@@ -82,9 +82,9 @@ const SignUpForm = () => {
 
   return (
     <div className="container">
-      <main id="main" className="container--sign-up">
-        <h2 className="title">Sign up with email and password</h2>
-        <form onSubmit={handleSubmit} className="sing-up-form">
+      <main id="main" className={styles.signUp}>
+        <h2 className={styles.title}>Sign up with email and password</h2>
+        <form onSubmit={handleSubmit} className={styles.singUpForm}>
           <FormInput
             label="Display Name"
             type="text"
@@ -127,7 +127,7 @@ const SignUpForm = () => {
             id="password-conf-sing-up"
           />
 
-          <div className="sing-up-form__btn">
+          <div className={styles.btn}>
             <Button type="submit">Sign up</Button>
           </div>
         </form>

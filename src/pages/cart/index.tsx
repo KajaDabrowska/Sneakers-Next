@@ -23,16 +23,16 @@ const Cart = () => {
 
   return (
     <main id="main" className="container">
-      <div className="cart ">
-        <h1 className="cart__title">My Cart</h1>
+      <div className={styles.cart}>
+        <h1 className={styles.title}>My Cart</h1>
 
         {cartItems.map((item, id) => (
           <CheckoutItem item={item} key={id} />
         ))}
 
-        <p className="cart__total">
+        <p className={styles.total}>
           Cart Total:&nbsp;
-          <span className="cart__total--price">&nbsp;${cartTotal}.00</span>
+          <span className={styles.price}>&nbsp;${cartTotal}.00</span>
         </p>
       </div>
     </main>

@@ -24,18 +24,18 @@ const User = () => {
 
   return (
     <main id="main" className="container">
-      <div className="user">
+      <div className={styles.user}>
         <SignInForm />
 
         <p>
           Don&apos;t have an account?&nbsp;
-          <Link className="sign-up__link" href="/sign-up">
-            Sign up
+          <Link href="/sign-up">
+            <a className={styles.signUpLink}>Sign up</a>
           </Link>
         </p>
 
         {currentUser ? (
-          <div className="user__sign-out-btn">
+          <div className={styles.signOutBtn}>
             <Button onClick={handleSignOut}>SING OUT</Button>
           </div>
         ) : (

@@ -1,10 +1,10 @@
-.item-page-container {
+.container {
   @media (min-width: 62.5em) {
     padding: var(--container-pad);
   }
 }
 
-.item-page {
+.itemPage {
   justify-content: center;
 
   /*------------------*/

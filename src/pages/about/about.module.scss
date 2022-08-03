@@ -1,18 +1,19 @@
 .about {
   text-align: center;
 
-  &__titile {
+  .titile {
     margin-bottom: 2rem;
   }
 
-  &__text {
+  .text {
     margin-bottom: 4rem;
-    &--accent {
+
+    .accent {
       color: hsl(var(--clr-prim));
     }
   }
 
-  &__img {
-    width: 30rem;
+  .img > span {
+    max-width: 50rem !important;
   }
 }
