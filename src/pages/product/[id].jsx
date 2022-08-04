@@ -1,4 +1,4 @@
-import { Fragment, useContext, useState, useRef } from "react";
+import { Fragment, useContext, useState, useRef, useSelector } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
@@ -9,6 +9,8 @@ import { AddBtnContext } from "../../contexts/add-btn-context";
 
 import ImageCarousel from "../../components/image-carousel/image-carousel.component";
 // import Button from "../../components/button/button.component";
+
+import { selectCategories } from "../../store/category/category.selector";
 
 //ICONS
 import minusIcon from "../../public/assets/icon-minus.svg";
@@ -40,6 +42,10 @@ const ItemPage = ({ props }) => {
   //FIXME
   // const { ref } = useContext(AddBtnContext);
   // console.log("props", props);
+
+  // const categories = useSelector(selectCategories);
+  // console.log(categories);
+
   const router = useRouter();
   const { id } = router.query;
   console.log(router.query);

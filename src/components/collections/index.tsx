@@ -9,7 +9,7 @@ import styles from "./collections.module.scss";
 
 const Collections = () => {
   const categories = useSelector(selectCategories);
-  console.log("categories", categories);
+
   return (
     <main id="main" className={`container ${styles.collections}`}>
       <h1 className={styles.title}>Collections</h1>

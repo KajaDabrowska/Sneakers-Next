@@ -27,38 +27,41 @@ import blancAvatarImg from "../../public/images/image-blanc-avatar.png";
 
 import styles from "./navigation.module.scss";
 
+//TODO Maybe make use of next-redux-wrapper ?
+
 //TODO image from email data?
 const Navigation = () => {
   const dispatch: AppDispatchType = useDispatch();
 
   // GET CATEGORIES
-  // useEffect(() => {
-  //   dispatch(fetchCategories());
-  // }, []);
+  useEffect(() => {
+    if (typeof window !== "undefined") dispatch(fetchCategories());
+  }, []);
 
-  // // GET USER
-  // useEffect(() => {
-  //   // if user comes in make user doc(or just get the reference)
-  //   const unsubscribe = onAuthStateChangedListener((user) => {
-  //     const getUserSnapshotAndSetUser = async (user: UserType) => {
-  //       const userSnapshot = await createUserDocFromAuth(user);
-  //       if (userSnapshot) {
-  //         dispatch(setUser({ ...userSnapshot.data(), id: userSnapshot.id }));
-  //       }
-  //     };
+  // GET USER
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // if user comes in make user doc(or just get the reference)
+      const unsubscribe = onAuthStateChangedListener((user) => {
+        const getUserSnapshotAndSetUser = async (user: UserType) => {
+          const userSnapshot = await createUserDocFromAuth(user);
+          if (userSnapshot) {
+            dispatch(setUser({ ...userSnapshot.data(), id: userSnapshot.id }));
+          }
+        };
 
-  //     if (user) {
-  //       getUserSnapshotAndSetUser(user);
-  //     } else {
-  //       // there is no user
-  //       dispatch(setUser(user));
-  //     }
-  //   });
+        if (user) {
+          getUserSnapshotAndSetUser(user);
+        } else {
+          // there is no user
+          dispatch(setUser(user));
+        }
+      });
 
-  //   return unsubscribe;
-
-  //   // dispatch never changes but react does not know
-  // }, []);
+      return unsubscribe;
+    }
+    // dispatch never changes but react does not know
+  }, []);
 
   const [menuIsVisible, setMenuIsVisible] = useState<boolean>(false);
   // const [menuIsVisible, setMenuIsVisible] = useState<boolean>(false);
@@ -88,11 +91,7 @@ const Navigation = () => {
           isExpanded={menuIsVisible}
         />
 
-        <Link
-          href="/"
-          //FIXME please margin omg
-          // className={styles.logoLink}
-        >
+        <Link href="/">
           <div className={`${styles.logo} ${styles.logoLink}`}>
             <Image src={sneakersLogo} alt="Sneakers home" />
           </div>
@@ -150,7 +149,9 @@ const Navigation = () => {
         >
           <ul>
             {/*BUG  */}
-            {/* <li><CartIcon ref={btnRef} /></li> */}
+            <li>
+              <CartIcon ref={btnRef} />
+            </li>
 
             {!cartDropdownHidden && <CartDropdown cartIconToggleRef={btnRef} />}
 

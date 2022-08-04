@@ -21,33 +21,36 @@ type Props = {
 };
 
 const CartDropdown = ({ cartIconToggleRef }: Props) => {
-  const { ref: addBtnRef } = useContext(AddBtnContext);
+  // const { ref: addBtnRef } = useContext(AddBtnContext); //FIXME
 
   const cartItems = useSelector(selectCartItems);
   const cartCount = useSelector(selectCartCount);
 
-  const cartDropdownRef = useRef<HTMLDivElement>(null);
+  // const cartDropdownRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        cartDropdownRef.current &&
-        !cartDropdownRef.current.contains(event.target as Node) &&
-        !cartIconToggleRef?.current?.contains(event.target as Node) &&
-        !addBtnRef?.current?.contains(event.target as Node)
-      ) {
-        dispatch(setCartDropdownHidden(true));
-      }
-    }
+  // useEffect(() => {
+  //   function handleClickOutside(event: MouseEvent) {
+  //     if (
+  //       cartDropdownRef.current &&
+  //       !cartDropdownRef.current.contains(event.target as Node) &&
+  //       !cartIconToggleRef?.current?.contains(event.target as Node) &&
+  //       !addBtnRef?.current?.contains(event.target as Node)
+  //     ) {
+  //       dispatch(setCartDropdownHidden(true));
+  //     }
+  //   }
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => document.removeEventListener("mousedown", handleClickOutside);
+  // }, []);
 
   return (
-    <div className={styles.cartDropdown} ref={cartDropdownRef}>
+    <div
+      className={styles.cartDropdown}
+      // ref={cartDropdownRef}
+    >
       <h2 className={styles.title}>Cart</h2>
 
       <div className={styles.listBtnContainer}>
@@ -55,6 +58,7 @@ const CartDropdown = ({ cartIconToggleRef }: Props) => {
           <p className={styles.empty}>Your cart is empty.</p>
         ) : (
           <Fragment>
+            {/*FIXME i think maybe li should be here and not in the cartitem */}
             <ul className={styles.list}>
               {cartItems.map((item) => (
                 <CartItem key={item.id} cartItem={item} />

@@ -8,12 +8,10 @@
   // padding-bottom: 2rem;
 
   .logoLink {
-    //FIXMEBUG
     margin-right: auto;
-    // background-color: red;
   }
 
-  .logo {
+  .logo > span {
     width: 13rem;
   }
 
@@ -79,7 +77,7 @@
 
   //FIXME prettier way of writin this?
   .user > span {
-    width: 2.5rem;
+    width: 4.5rem !important;
   }
   .userBlanc > span {
     filter: brightness(0) saturate(100%) invert(41%) sepia(5%) saturate(1028%)

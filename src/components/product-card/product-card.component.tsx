@@ -7,7 +7,6 @@ import styles from "./product-card.module.scss";
 type Props = {
   product: ItemType;
 };
-//FIXME how to use img when img is from url link
 const ProductCard = ({ product }: Props) => {
   const { name, imageUrl, id, brand, description, images, hasMultiplePrices } =
     product;
