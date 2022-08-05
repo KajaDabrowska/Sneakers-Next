@@ -1,16 +1,36 @@
+import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import { rootReducer } from "./root-reducer";
+import userReducer from "./user/userSlice";
+import categoriesReducer from "./category/categoryReducer";
+import cartReducer from "./cart/cartSlice";
 
-const persistConfig = {
+const rootPersistConfig = {
   key: "root",
   storage: storage,
-  blacklist: ["user"],
+  blacklist: ["user", "cart"],
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// This is needed, because if we save cartDropdown Next.js will throw a hydration error on reload if the cart dropdown was visible
+// That happens because on initial server side render it is hidden, the difference is what causes the error
+// I could in theory import CartDropdown component dynamically but I think this is a nice solution
+const cartPersistConfig = {
+  key: "cart",
+  storage: storage,
+  blacklist: ["cartDropdownHidden"],
+};
+
+export const rootReducer = combineReducers({
+  user: userReducer,
+  categories: categoriesReducer,
+  cart: persistReducer(cartPersistConfig, cartReducer),
+});
+
+export type RootStateType = ReturnType<typeof rootReducer>;
+
+const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,

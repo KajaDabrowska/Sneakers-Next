@@ -1,4 +1,5 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useMemo } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,7 +14,7 @@ import { AppDispatchType } from "../../store/store";
 import { fetchCategories } from "../../store/category/categoryReducer";
 
 import MobileNavToggleBtn from "../MobileNavToggleBtn/MobileNavToggleBtn.component";
-import CartIcon from "../cart-icon/cart-icon.component";
+// import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import FocusTrap from "../focus-trap/focus-trap.component";
 
@@ -78,6 +79,16 @@ const Navigation = () => {
   const btnRef = React.createRef<HTMLButtonElement>();
 
   // const userImgSrc = currentUser ? avatarImg : blancAvatarImg;
+
+  //TODO loading spinner
+  const CartIcon = useMemo(
+    () =>
+      dynamic(() => import("../cart-icon/cart-icon.component"), {
+        loading: () => <p>Icon is loading</p>,
+        ssr: false,
+      }),
+    []
+  );
 
   return (
     <Fragment>
@@ -148,8 +159,8 @@ const Navigation = () => {
           id="secondary-nav"
         >
           <ul>
-            {/*BUG  */}
             <li>
+              {/*FIXME the hydration error on amount change maybe dynamic import??  */}
               <CartIcon ref={btnRef} />
             </li>
 
@@ -172,8 +183,6 @@ const Navigation = () => {
           </ul>
         </nav>
       </div>
-      {/*FIXME here was an outlet  */}
-      {/* <Outlet /> */}
     </Fragment>
   );
 };

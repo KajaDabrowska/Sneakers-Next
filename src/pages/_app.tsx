@@ -4,14 +4,18 @@ import { store } from "../store/store";
 
 import Layout from "../components/layout/layout";
 
+import { AddBtnContextProvider } from "../contexts/add-btn-context";
+
 import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <AddBtnContextProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AddBtnContextProvider>
     </Provider>
   );
 }

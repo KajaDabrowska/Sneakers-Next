@@ -20,7 +20,7 @@ export const AddBtnContextProvider = ({ children }) => {
   const ref = React.createRef();
 
   const value = {
-    ref: ref,
+    addBtnRef: ref,
   };
 
   return (
