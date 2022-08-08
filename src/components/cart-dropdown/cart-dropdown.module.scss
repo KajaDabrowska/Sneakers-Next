@@ -9,14 +9,14 @@
 
   box-shadow: 1px 18px 36px -8px hsl(var(--clr-gray--300), 0.5);
 
-  &.empty {
+  .empty {
     color: hsl(var(--clr-gray--300));
     font-weight: var(--ff-w-b);
     text-align: center;
     padding-block: 4.5rem;
   }
 
-  &.title {
+  .title {
     font-size: 1.8rem;
     font-weight: var(--ff-w-b);
     text-align: left;
@@ -24,12 +24,12 @@
     border-bottom: var(--border-b-prim);
   }
 
-  &.list {
+  .list {
     display: flex;
     flex-direction: column;
   }
 
-  &.listBtnContainer {
+  .listBtnContainer {
     padding: 2rem 2rem 2.5rem 2rem;
   }
 }

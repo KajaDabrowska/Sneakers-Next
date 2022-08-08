@@ -76,11 +76,13 @@ const Navigation = () => {
     !menuIsHidden ? setMenuIsHidden(true) : setMenuIsHidden(false);
   };
 
-  const btnRef = React.createRef<HTMLButtonElement>();
+  const cartIconRef = React.createRef<HTMLButtonElement>();
 
   // const userImgSrc = currentUser ? avatarImg : blancAvatarImg;
 
   //TODO loading spinner
+  // We dynamically import because the changing number of items will cause a hydration error otherwise
+  // Because of this the component which is imported needs a wrapper to pass a ref too, check it out!
   const CartIcon = useMemo(
     () =>
       dynamic(() => import("../cart-icon/cart-icon.component"), {
@@ -160,11 +162,10 @@ const Navigation = () => {
         >
           <ul>
             <li>
-              {/*FIXME the hydration error on amount change maybe dynamic import??  */}
-              <CartIcon ref={btnRef} />
+              <CartIcon cartIconRef={cartIconRef} />
             </li>
 
-            {!cartDropdownHidden && <CartDropdown cartIconToggleRef={btnRef} />}
+            {!cartDropdownHidden && <CartDropdown ref={cartIconRef} />}
 
             <li>
               <Link href="/user">

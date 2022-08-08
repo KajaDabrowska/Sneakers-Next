@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -15,10 +15,16 @@ const Cart = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
 
+  const [clientSide, setClientSide] = useState(false);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setCartDropdownHidden(true));
+  }, []);
+
+  useEffect(() => {
+    setClientSide(true);
   }, []);
 
   return (
@@ -26,13 +32,16 @@ const Cart = () => {
       <div className={styles.cart}>
         <h1 className={styles.title}>My Cart</h1>
 
-        {cartItems.map((item, id) => (
-          <CheckoutItem item={item} key={id} />
-        ))}
+        <div>
+          {clientSide &&
+            cartItems.map((item, id) => <CheckoutItem item={item} key={id} />)}
+        </div>
 
         <p className={styles.total}>
           Cart Total:&nbsp;
-          <span className={styles.price}>&nbsp;${cartTotal}.00</span>
+          {clientSide && (
+            <span className={styles.price}>&nbsp;${cartTotal}.00</span>
+          )}
         </p>
       </div>
     </main>

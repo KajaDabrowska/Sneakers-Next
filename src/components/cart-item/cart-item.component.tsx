@@ -24,7 +24,7 @@ const CartItem = ({ cartItem }: Props) => {
       <Link href={`/product-${cartItem.id}`}>
         <a className={styles.imgAndDesc}>
           <div className={styles.image}>
-            <Image src={imageUrl} alt="" />
+            <Image src={imageUrl} alt="" width={47} height={47} />
           </div>
 
           <div className={styles.description}>

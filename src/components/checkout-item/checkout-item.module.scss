@@ -11,6 +11,7 @@
     display: flex;
     align-items: flex-start;
     max-width: 35rem;
+    padding-bottom: 2.5rem;
 
     &:not(:last-child) {
       border-bottom: var(--border-b-prim);
@@ -22,7 +23,7 @@
       height: 8.7rem;
       border-radius: 0.5rem;
       // can't have gap on parent because it causes issues for delete icon
-      margin-right: 1rem;
+      margin-right: 1rem !important;
     }
 
     .description {

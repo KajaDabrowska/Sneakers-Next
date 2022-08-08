@@ -22,7 +22,6 @@
       outline: 1px solid hsl(var(--clr-prim));
 
       ~ .desc .price {
-        // background-color: red;
         transform: translateY(-35%);
       }
     }
@@ -32,9 +31,13 @@
     position: relative;
   }
 
-  // .name {
-  //   font-weight: var(--ff-w-b);
-  // }
+  .name {
+    display: inline-block;
+    max-width: 25ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   .price {
     z-index: 110;

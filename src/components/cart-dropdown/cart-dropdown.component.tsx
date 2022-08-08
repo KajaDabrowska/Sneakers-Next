@@ -1,4 +1,10 @@
-import React, { useContext, Fragment, useRef, useEffect } from "react";
+import React, {
+  useContext,
+  Fragment,
+  useRef,
+  useEffect,
+  MutableRefObject,
+} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
 
@@ -16,64 +22,65 @@ import CartItem from "../cart-item/cart-item.component";
 
 import styles from "./cart-dropdown.module.scss";
 
-type Props = {
-  cartIconToggleRef: React.RefObject<HTMLButtonElement>;
-};
+const CartDropdown = React.forwardRef<HTMLButtonElement>(
+  (props, cartIconRef) => {
+    const { addBtnRef } = useContext(AddBtnContext);
 
-const CartDropdown = ({ cartIconToggleRef }: Props) => {
-  const { addBtnRef } = useContext(AddBtnContext);
+    const cartItems = useSelector(selectCartItems);
+    const cartCount = useSelector(selectCartCount);
 
-  useEffect(() => {
-    console.log(addBtnRef);
-  }, []);
+    const cartDropdownRef = useRef<HTMLDivElement>(null);
 
-  const cartItems = useSelector(selectCartItems);
-  const cartCount = useSelector(selectCartCount);
+    const dispatch = useDispatch();
 
-  const cartDropdownRef = useRef<HTMLDivElement>(null);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        cartDropdownRef.current &&
-        !cartDropdownRef.current.contains(event.target as Node) &&
-        !cartIconToggleRef?.current?.contains(event.target as Node) &&
-        !addBtnRef?.current?.contains(event.target as Node)
-      ) {
-        dispatch(setCartDropdownHidden(true));
+    useEffect(() => {
+      function handleClickOutside(event: MouseEvent) {
+        if (
+          cartDropdownRef.current &&
+          !cartDropdownRef.current.contains(event.target as Node) &&
+          (cartIconRef as MutableRefObject<HTMLButtonElement>).current &&
+          !(
+            cartIconRef as MutableRefObject<HTMLButtonElement>
+          )?.current?.contains(event.target as Node) &&
+          !addBtnRef?.current?.contains(event.target as Node)
+        ) {
+          dispatch(setCartDropdownHidden(true));
+        }
       }
-    }
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+      document.addEventListener("mousedown", handleClickOutside);
+      return () =>
+        document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
-  return (
-    <div className={styles.cartDropdown} ref={cartDropdownRef}>
-      <h2 className={styles.title}>Cart</h2>
+    return (
+      <div className={styles.cartDropdown} ref={cartDropdownRef}>
+        <h2 className={styles.title}>Cart</h2>
 
-      <div className={styles.listBtnContainer}>
-        {!cartCount ? (
-          <p className={styles.empty}>Your cart is empty.</p>
-        ) : (
-          <Fragment>
-            <ul className={styles.list}>
-              {cartItems.map((item) => (
-                <CartItem key={item.id} cartItem={item} />
-              ))}
-            </ul>
+        <div className={styles.listBtnContainer}>
+          {!cartCount ? (
+            <p className={styles.empty}>Your cart is empty.</p>
+          ) : (
+            <Fragment>
+              <ul className={styles.list}>
+                {cartItems.map((item) => (
+                  <CartItem key={item.id} cartItem={item} />
+                ))}
+              </ul>
 
-            <Link href="/cart" passHref>
-              {/*The btn type is responsible for bringing focus to it once dropdown is visible  */}
-              <Button btnType="checkout">Checkout</Button>
-            </Link>
-          </Fragment>
-        )}
+              <Link href="/cart" passHref>
+                {/*The btn type is responsible for bringing focus to it once dropdown is visible  */}
+                <a>
+                  <Button btnType="checkout">Checkout</Button>
+                </a>
+              </Link>
+            </Fragment>
+          )}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+);
 
+CartDropdown.displayName = "CartDropdown";
 export default CartDropdown;

@@ -55,14 +55,9 @@ const ItemPage = () => {
 
   const router = useRouter();
   const { id } = router.query;
-  console.log(router.query);
 
   const categories = useSelector(selectCategories);
-  console.log(categories);
-  // console.log(
-  //   "prod",
-  //   categories.women[id] ? categories.women[id] : categories.men[id]
-  // );
+
   useEffect(() => {
     const womenIds = categories.women.map((item) => item.id);
     const womenIncludes = womenIds.includes(id);
@@ -73,7 +68,6 @@ const ItemPage = () => {
     const theItem = womenIncludes
       ? categories.women[itemIndex]
       : categories.men[itemIndex];
-    console.log(theItem);
 
     if (theItem) {
       const { brand, name, description, imageUrl, images, hasMultiplePrices } =
@@ -136,11 +130,6 @@ const ItemPage = () => {
         <div className={styles.itemPage}>
           <dialog ref={dialogRef} className="dialog">
             <button className="dialog__close-btn" onClick={toggleModal}>
-              {/* <img
-              src={closeIcon}
-              alt="close modal"
-              className="dialog__close-icon"
-            /> */}
               <div className={styles.imageWrapper}>
                 <Image src={closeIcon} alt="close modal" />
               </div>
@@ -188,11 +177,6 @@ const ItemPage = () => {
                   onClick={decreaseQuantity}
                   className="counter__btn counter__btn--minus"
                 >
-                  {/* <img
-                  className="counter__icon"
-                  src={minusIcon}
-                  alt="Decrease item count"
-                /> */}
                   <div className={styles.imageWrapper}>
                     <Image src={minusIcon} alt="Decrease item count" />
                   </div>
@@ -207,11 +191,6 @@ const ItemPage = () => {
                   onClick={increaseQuantity}
                   className="counter__btn counter__btn--plus"
                 >
-                  {/* <img
-                  className="counter__icon"
-                  src={plusIcon}
-                  alt="Increase item count"
-                /> */}
                   <div className={styles.imageWrapper}>
                     <Image src={plusIcon} alt="Decrease item count" />
                   </div>
@@ -219,7 +198,6 @@ const ItemPage = () => {
               </div>
 
               <button ref={addBtnRef} onClick={addItemHandler} className="btn">
-                {/*FIXME adding items will change UI so on reload there will be a hydation error  */}
                 <div className="item-page__main-add-btn">
                   <Image src={cartIcon} alt="" />
                 </div>

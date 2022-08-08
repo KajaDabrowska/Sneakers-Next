@@ -18,20 +18,11 @@ const ProductCard = ({ product }: Props) => {
       <Link
         href={{
           pathname: `/product/${id}`,
-
-          // query: {
-          //   name: name,
-          //   description: description,
-          //   imageUrl: imageUrl,
-          //   images: images,
-          //   brand: brand,
-          //   hasMultiplePrices: hasMultiplePrices,
-          // },
         }}
       >
         <a className={styles.link}>
           <figure>
-            {/* <img src={imageUrl} alt="" className="product__image" /> */}
+            {/*FIXME shorten the title cuz the focus style is wider than image sometimes */}
             <div className={styles.imageWrapper}>
               <Image
                 src={imageUrl}
@@ -46,7 +37,7 @@ const ProductCard = ({ product }: Props) => {
             </div>
 
             <figcaption className={styles.desc}>
-              <span>{name}</span>
+              <span className={styles.name}>{name}</span>
               <span className={styles.price}>${price}.00</span>
             </figcaption>
           </figure>
