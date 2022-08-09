@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-.container {
+.imageContainer {
   position: relative;
   width: 100%;
 
@@ -41,35 +41,40 @@
     width: 3.8rem;
     height: 3.8rem;
 
-    &:hover .image-container__icon,
-    &:focus-visible .image-container__icon,
-    &:active .image-container__icon {
-      filter: invert(74%) sepia(95%) saturate(4360%) hue-rotate(348deg)
-        brightness(104%) contrast(101%);
-    }
-
-    .btnPrev {
-      left: 1.5rem;
-    }
-
-    .btnNext {
-      right: 1.5rem;
+    &:hover .icon,
+    &:focus-visible .icon,
+    &:active .icon {
+      span {
+        filter: invert(74%) sepia(95%) saturate(4360%) hue-rotate(348deg)
+          brightness(104%) contrast(101%);
+      }
     }
   }
 
-  .icon {
-    position: absolute;
-    width: 0.8rem;
+  .btnPrev > span {
+    left: 1.5rem !important;
+  }
+
+  .btnNext > span {
+    right: 1.5rem !important;
+  }
+
+  //TODO
+  // {
+  // span {} etc
+  // }
+  .icon > span {
+    position: absolute !important;
+    width: 0.8rem !important;
     top: 50%;
     transform: translateY(-50%);
+  }
+  .iconPrev > span {
+    left: 33% !important;
+  }
 
-    &--prev {
-      left: 33%;
-    }
-
-    &--next {
-      right: 38%;
-    }
+  .iconNext > span {
+    right: 38% !important;
   }
 }
 
@@ -105,11 +110,13 @@
   }
 
   .image {
-    width: 8rem;
-    height: 8rem;
-    border-radius: 0.8rem;
+    span {
+      width: 8rem !important;
+      height: 8rem !important;
+      border-radius: 0.8rem;
+    }
 
-    &.active {
+    &.active > span {
       opacity: 0.4;
     }
   }
@@ -129,40 +136,6 @@
   }
 }
 
-.dialog {
-  background-color: transparent;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  // so that the buttons don't get hidden
-  padding: 3rem;
-
-  .closeBtn {
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    width: 3.5rem;
-    padding-bottom: 2rem;
-
-    &:focus-visible .dialog__close-icon,
-    &:hover .dialog__close-icon,
-    &:active .dialog__close-icon {
-      filter: brightness(0) saturate(100%) invert(74%) sepia(95%)
-        saturate(4360%) hue-rotate(348deg) brightness(104%) contrast(101%);
-    }
-  }
-}
-
-// hack so i can use display flex on the dialog
-.dialog:not([open]) {
-  display: none;
-}
-
-//FIXME
-// ::backdrop {
-//   background-color: rgba(0, 0, 0, 0.75);
-// }
 .isModal {
   .image {
     height: 50rem;
@@ -183,13 +156,13 @@
     }
   }
 
-  .image-container__icon {
+  .icon {
     width: 1rem;
 
-    &--prev {
+    .iconPrev {
       left: 35%;
     }
-    &--next {
+    .iconNext {
       right: 35%;
     }
   }

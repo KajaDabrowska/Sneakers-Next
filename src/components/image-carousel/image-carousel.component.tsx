@@ -45,74 +45,87 @@ const ImageCarousel = ({
   };
 
   const maxWidthMediaQuery = 850;
-  // const size = useWindowSize();
+  const size = useWindowSize();
 
+  //FIXME main image on mobile hight weird
   //FIXME classes
   return (
     <div className={styles.imageCarousel}>
-      <div className={`${styles.container} ${modalStyles}`}>
+      <div className={`${styles.imageContainer} ${modalStyles}`}>
+        {/*FIXME no prev btn  */}
         <button onClick={prevImg} className={`${styles.btn} ${styles.btnPrev}`}>
-          <Image
-            src={prevIcon}
-            className={`${styles.icon} ${styles.btnPrev}`}
-            // className="image-container__icon image-container__icon--prev"
-            alt=""
-          />
-
-          <span className="sr-only">Previous image</span>
+          <div className={`${styles.icon} ${styles.iconPrev}`}>
+            <Image
+              src={prevIcon}
+              // className="image-container__icon image-container__icon--prev"
+              alt="Previous image"
+            />
+          </div>
         </button>
 
-        {/* {!isModal && size?.width > maxWidthMediaQuery ? (
-          <button className="image-container__image-btn" onClick={toggleModal}>
-            <img
-              className={`image-container__image`}
+        {/* This whole thing is for accessibility reasons */}
+        {!isModal && size?.width > maxWidthMediaQuery ? (
+          <button className={styles.imageBtn} onClick={toggleModal}>
+            <div className={styles.image}>
+              <Image
+                src={
+                  carouselIndex === 0
+                    ? imageUrl
+                    : imagesArray[carouselIndex - 1]
+                }
+                width={350}
+                height={350}
+                alt=""
+              />
+            </div>
+          </button>
+        ) : (
+          <div className={styles.image}>
+            <Image
               src={
                 carouselIndex === 0 ? imageUrl : imagesArray[carouselIndex - 1]
               }
+              width={isModal ? 600 : 300}
+              //FIXME width 100% cont
+              height={isModal ? 500 : 350}
               alt=""
             />
-          </button>
-        ) : (
-          <img
-            className={`image-container__image`}
-            src={
-              carouselIndex === 0 ? imageUrl : imagesArray[carouselIndex - 1]
-            }
-            alt=""
-          />
-        )} */}
+          </div>
+        )}
 
-        <button
-          onClick={nextImg}
-          className="image-container__btn  image-container__btn--next"
-        >
-          <Image
-            src={nextIcon}
-            className="image-container__icon image-container__icon--next"
-            alt=""
-          />
-
-          <span className="sr-only">Next image</span>
+        <button onClick={nextImg} className={`${styles.btn} ${styles.btnNext}`}>
+          <div className={`${styles.icon} ${styles.iconNext}`}>
+            <Image
+              src={nextIcon}
+              // className="image-container__icon image-container__icon--next"
+              alt="Next image"
+            />
+          </div>
         </button>
       </div>
 
       {/*only on desktop carousel slider beneath main image */}
-      <div className="item-page__carousel carousel">
+      <div className={styles.carousel}>
         {Array.from({ length: CAROUSEL_LENGTH + 1 }).map((image, idx) => (
           <button
             onClick={() => chooseImage(idx)}
             key={uuidv4()}
-            className={`carousel__image-wrapper + ${
-              carouselIndex === idx ? "active" : ""
+            className={`${styles.imageWrapper} ${
+              carouselIndex === idx ? `${styles.active}` : ""
             }`}
           >
-            <Image
-              className={`carousel__image + ${
-                carouselIndex === idx ? "active" : ""
+            <div
+              className={`${styles.image} + ${
+                carouselIndex === idx ? `${styles.active}` : ""
               }`}
-              src={idx === 0 ? imageUrl : imagesArray[idx - 1]}
-              alt=""
-            />
+            >
+              <Image
+                src={idx === 0 ? imageUrl : imagesArray[idx - 1]}
+                alt=""
+                height={800}
+                width={800}
+              />
+            </div>
           </button>
         ))}
       </div>
@@ -122,28 +135,28 @@ const ImageCarousel = ({
 
 export default ImageCarousel;
 
-// function useWindowSize() {
-//   // Initialize state with undefined width/height so server and client renders match
-//   // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-//   const [windowSize, setWindowSize] = useState({
-//     width: 0,
-//     height: 0,
-//   });
-//   useEffect(() => {
-//     // Handler to call on window resize
-//     function handleResize() {
-//       // Set window width/height to state
-//       setWindowSize({
-//         width: window.innerWidth,
-//         height: window.innerHeight,
-//       });
-//     }
-//     // Add event listener
-//     window.addEventListener("resize", handleResize);
-//     // Call handler right away so state gets updated with initial window size
-//     handleResize();
-//     // Remove event listener on cleanup
-//     return () => window.removeEventListener("resize", handleResize);
-//   }, []); // Empty array ensures that effect is only run on mount
-//   return windowSize;
-// }
+function useWindowSize() {
+  // Initialize state with undefined width/height so server and client renders match
+  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+  const [windowSize, setWindowSize] = useState({
+    width: 0,
+    height: 0,
+  });
+  useEffect(() => {
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // Empty array ensures that effect is only run on mount
+  return windowSize;
+}

@@ -1,14 +1,22 @@
-import { Fragment, useContext, useState, useRef, useEffect } from "react";
-import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import {
+  Fragment,
+  useContext,
+  useState,
+  useRef,
+  useEffect,
+  useMemo,
+} from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addItemToCart } from "../../store/cart/cartSlice";
 
 import { AddBtnContext } from "../../contexts/add-btn-context";
 
-import ImageCarousel from "../../components/image-carousel/image-carousel.component";
-// import Button from "../../components/button/button.component";
+// import ImageCarousel from "../../components/image-carousel/image-carousel.component";
+import Button from "../../components/button/button.component";
 
 import { selectCategories } from "../../store/category/category.selector";
 
@@ -124,45 +132,58 @@ const ItemPage = () => {
     }
   };
 
+  const ImageCarousel = useMemo(
+    () =>
+      dynamic(
+        () =>
+          import("../../components/image-carousel/image-carousel.component"),
+        {
+          loading: () => <p>Image Carousel loading...</p>,
+          ssr: false,
+        }
+      ),
+    []
+  );
+
   return (
-    <main id="main" className={styles.container}>
+    <main id="main" className={styles.itemPageContainer}>
       {item && (
         <div className={styles.itemPage}>
-          <dialog ref={dialogRef} className="dialog">
-            <button className="dialog__close-btn" onClick={toggleModal}>
-              <div className={styles.imageWrapper}>
+          <dialog ref={dialogRef} className={styles.dialog}>
+            <button onClick={toggleModal} className={styles.closeBtn}>
+              <div className={styles.closeIcon}>
                 <Image src={closeIcon} alt="close modal" />
               </div>
             </button>
 
-            {/* <ImageCarousel
-            imageUrl={imageUrl}
-            imagesArray={images}
-            toggleModal={toggleModal}
-            isModal={true}
-          /> */}
+            <ImageCarousel
+              imageUrl={imageUrl}
+              imagesArray={imagesArray}
+              toggleModal={toggleModal}
+              isModal={true}
+            />
           </dialog>
 
           <div className="container-left">
-            {/* <ImageCarousel
-            imageUrl={imageUrl}
-            imagesArray={images}
-            toggleModal={toggleModal}
-            isModal={false}
-          /> */}
+            <ImageCarousel
+              imageUrl={imageUrl}
+              imagesArray={imagesArray}
+              toggleModal={toggleModal}
+              isModal={false}
+            />
           </div>
 
-          <div className="container-right">
-            <p className="item-page__brand">{brand}</p>
-            <h1 className="item-page__name">{name}</h1>
-            <p className="item-page__description">{description}</p>
+          <div className={styles.containerRight}>
+            <p className={styles.brand}>{brand}</p>
+            <h1 className={styles.name}>{name}</h1>
+            <p className={styles.description}>{description}</p>
 
-            <p className="item-page__prices price">
-              <span className="price__current">${priceCurrent}.00</span>
+            <p className={`${styles.prices} ${styles.price}`}>
+              <span className={styles.current}>${priceCurrent}.00</span>
               {hasMultiplePrices ? (
                 <Fragment>
-                  <span className="price__discount">{discountPercentage}%</span>
-                  <span className="price__old">
+                  <span className={styles.discount}>{discountPercentage}%</span>
+                  <span className={styles.old}>
                     <s>${priceOld}.00</s>
                   </span>
                 </Fragment>
@@ -171,34 +192,39 @@ const ItemPage = () => {
               )}
             </p>
 
-            <div className="item-page__add">
-              <div className="item-page__counter counter">
-                <button
-                  onClick={decreaseQuantity}
-                  className="counter__btn counter__btn--minus"
-                >
-                  <div className={styles.imageWrapper}>
+            <div className={styles.add}>
+              <div className={styles.counter}>
+                <button onClick={decreaseQuantity} className={styles.btn}>
+                  <div className={styles.icon}>
                     <Image src={minusIcon} alt="Decrease item count" />
                   </div>
                 </button>
 
-                <span className="counter__count" aria-live="polite">
+                <span className={styles.count} aria-live="polite">
                   <span className="sr-only">Item count</span>
                   {itemQuantity}
                 </span>
 
-                <button
-                  onClick={increaseQuantity}
-                  className="counter__btn counter__btn--plus"
-                >
-                  <div className={styles.imageWrapper}>
+                <button onClick={increaseQuantity} className={styles.btn}>
+                  <div className={styles.icon}>
                     <Image src={plusIcon} alt="Decrease item count" />
                   </div>
                 </button>
               </div>
 
-              <button ref={addBtnRef} onClick={addItemHandler} className="btn">
-                <div className="item-page__main-add-btn">
+              {/* <Button>
+                <div className={styles.mainAddBtn}>
+                  <Image src={cartIcon} alt="" />
+                </div>
+                Add to cart
+              </Button> */}
+
+              <button
+                ref={addBtnRef}
+                onClick={addItemHandler}
+                className={styles.btn} //TODO?
+              >
+                <div className={styles.mainAddBtn}>
                   <Image src={cartIcon} alt="" />
                 </div>
                 Add to cart

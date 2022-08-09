@@ -1,4 +1,4 @@
-.container {
+.itemPageContainer {
   @media (min-width: 62.5em) {
     padding: var(--container-pad);
   }
@@ -10,7 +10,7 @@
   /*------------------*/
   /*---- TEXT ----*/
   /*------------------*/
-  .container-right {
+  .containerRight {
     padding-block: 3rem;
     padding-inline: var(--container-pad-inline);
     align-self: center;
@@ -21,7 +21,7 @@
   //    position: absolute;
   // }
 
-  &__brand {
+  .brand {
     font-size: 1.3rem;
     font-weight: var(--ff-w-b);
     color: hsl(var(--clr-prim));
@@ -31,7 +31,7 @@
     margin-bottom: 1rem;
   }
 
-  &__name {
+  .name {
     font-size: 2.9rem;
     font-weight: var(--ff-w-b);
     color: hsl(var(--clr-gray--400));
@@ -40,7 +40,7 @@
     margin-bottom: 1.5rem;
   }
 
-  &__description {
+  .description {
     color: hsl(var(--clr-gray--300));
 
     margin-bottom: 2.5rem;
@@ -49,7 +49,7 @@
   /*------------------*/
   /*---- PRICE ----*/
   /*------------------*/
-  &__prices {
+  .prices {
     display: flex;
     align-items: center;
     gap: 1.5rem;
@@ -58,13 +58,13 @@
   }
 
   .price {
-    &__current {
+    .current {
       font-size: 2.5rem;
       font-weight: var(--ff-w-b);
       color: hsl(var(--clr-gray--400));
     }
 
-    &__discount {
+    .discount {
       font-size: 1.6rem;
       font-weight: var(--ff-w-b);
       color: hsl(var(--clr-prim));
@@ -73,7 +73,7 @@
       border-radius: 0.5rem;
     }
 
-    &__old {
+    .old {
       font-weight: var(--ff-w-b);
       color: hsl(var(--clr-gray--200));
 
@@ -100,7 +100,7 @@
   /*---- COUNTER ----*/
   /*------------------*/
 
-  &__counter {
+  .counter {
     background-color: hsl(var(--clr-gray--100));
     border-radius: 1rem;
     // padding: 1.5rem 1.5rem;
@@ -109,40 +109,44 @@
     justify-content: space-between;
     min-width: 16rem;
     margin-top: 0.1rem;
-  }
-
-  .counter {
     margin-bottom: 1.5rem;
 
-    &__btn {
+    .btn {
       cursor: pointer;
       background-color: hsl(var(--clr-gray--100));
       border: none;
       border-radius: 1rem;
       padding: 2rem 2.5rem;
 
-      &:hover .counter__icon,
-      &:active .counter__icon {
-        opacity: 0.5;
+      &:hover .icon,
+      &:active .icon {
+        span {
+          //FIXME box shadow lol
+          box-shadow: none !important;
+          opacity: 0.5 !important;
+        }
       }
     }
 
-    &__count {
+    .count {
       font-weight: var(--ff-w-b);
       color: hsl(var(--clr-gray--400));
     }
   }
 
-  &__main-add-btn {
-    display: inline-block;
-    width: 1.6rem;
-    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(4182%)
-      hue-rotate(54deg) brightness(113%) contrast(101%);
-    margin-right: 1.5rem;
+  .mainAddBtn {
+    display: inline-block !important;
+    span {
+      // display: inline-block !important;
+      width: 1.6rem !important;
+      filter: brightness(0) saturate(100%) invert(100%) sepia(0%)
+        saturate(4182%) hue-rotate(54deg) brightness(113%) contrast(101%);
+      margin-right: 1.5rem !important;
+    }
   }
 
   @media (min-width: 37.5em) {
-    &__add {
+    .add {
       display: flex;
       gap: 1.5rem;
       align-items: flex-start;
@@ -156,9 +160,71 @@
     //TODO
     gap: clamp(1rem, 2vw + 1rem, 8rem);
 
-    .container-right {
+    .containerRight {
       // padding: var(--container-padding);
       padding: unset;
     }
   }
+}
+
+.btn {
+  --bg-col: var(--clr-prim);
+
+  cursor: pointer;
+  background-color: hsl(var(--bg-col));
+  color: hsl(var(--clr-white));
+  font-weight: var(--ff-w-b);
+  text-align: center;
+  border: 1px solid hsl(var(--bg-col), 0.822);
+  border-radius: 1.3rem;
+  width: 100%;
+  padding: 1.5rem 0;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    box-shadow: 0px 24px 30px -19px hsl(var(--bg-col), 0.55);
+  }
+}
+
+.dialog {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  // so that the buttons don't get hidden
+  padding: 3rem;
+
+  .closeBtn {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    width: 3.5rem;
+    height: 3.5rem;
+    padding-bottom: 2rem;
+
+    .closeIcon {
+      span {
+        width: 3.5rem !important;
+        height: 2.5rem !important;
+      }
+    }
+
+    &:focus-visible .closeIcon,
+    &:hover .closeIcon,
+    &:active .closeIcon {
+      filter: brightness(0) saturate(100%) invert(74%) sepia(95%)
+        saturate(4360%) hue-rotate(348deg) brightness(104%) contrast(101%);
+    }
+  }
+}
+
+// hack so i can use display flex on the dialog
+.dialog:not([open]) {
+  display: none;
+}
+
+// FIXME
+.dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
 }
