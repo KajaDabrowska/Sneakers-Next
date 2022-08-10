@@ -18,7 +18,6 @@ const Button: FC<ButtonProps> = ({ children, btnType, ...otherProps }) => {
     }
   }, []);
 
-  //FIXME btn type
   return (
     <button ref={btnRef} className={`${styles.btn} ${btnType}`} {...otherProps}>
       {children}

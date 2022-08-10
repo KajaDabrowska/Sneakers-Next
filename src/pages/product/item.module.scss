@@ -118,11 +118,13 @@
       border-radius: 1rem;
       padding: 2rem 2.5rem;
 
+      &:hover {
+        box-shadow: none;
+      }
+
       &:hover .icon,
       &:active .icon {
         span {
-          //FIXME box shadow lol
-          box-shadow: none !important;
           opacity: 0.5 !important;
         }
       }
@@ -156,12 +158,11 @@
   @media (min-width: 62.5em) {
     display: flex;
     padding: var(--container-padding);
-    // gap: min(8rem, 2vw);
-    //TODO
+    
     gap: clamp(1rem, 2vw + 1rem, 8rem);
 
     .containerRight {
-      // padding: var(--container-padding);
+      
       padding: unset;
     }
   }
@@ -187,6 +188,10 @@
 }
 
 .dialog {
+  @media (max-width: 62.5em) {
+    display: none;
+  }
+
   background-color: transparent;
   border: none;
   display: flex;
@@ -224,7 +229,7 @@
   display: none;
 }
 
-// FIXME
+
 .dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.75);
 }

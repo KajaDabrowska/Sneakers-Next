@@ -26,6 +26,8 @@ import sneakersLogo from "../../public/assets/logo.svg";
 import avatarImg from "../../public/images/image-avatar.jpg";
 import blancAvatarImg from "../../public/images/image-blanc-avatar.png";
 
+import LoadingSpinner from "../loadingSpinner/loading-spinner.component";
+
 import styles from "./navigation.module.scss";
 
 //TODO Maybe make use of next-redux-wrapper ?
@@ -80,13 +82,12 @@ const Navigation = () => {
 
   // const userImgSrc = currentUser ? avatarImg : blancAvatarImg;
 
-  //TODO loading spinner
   // We dynamically import because the changing number of items will cause a hydration error otherwise
   // Because of this the component which is imported needs a wrapper to pass a ref too, check it out!
   const CartIcon = useMemo(
     () =>
       dynamic(() => import("../cart-icon/cart-icon.component"), {
-        loading: () => <p>Icon is loading</p>,
+        loading: () => <LoadingSpinner />,
         ssr: false,
       }),
     []
@@ -105,9 +106,11 @@ const Navigation = () => {
         />
 
         <Link href="/">
-          <div className={`${styles.logo} ${styles.logoLink}`}>
-            <Image src={sneakersLogo} alt="Sneakers home" />
-          </div>
+          <a>
+            <div className={`${styles.logo} ${styles.logoLink}`}>
+              <Image src={sneakersLogo} alt="Sneakers home" />
+            </div>
+          </a>
         </Link>
 
         <nav
@@ -169,7 +172,7 @@ const Navigation = () => {
 
             <li>
               <Link href="/user">
-                <div
+                <a
                   className={`${styles.user} ${
                     currentUser ? "" : styles.userBlanc
                   }`}
@@ -178,7 +181,7 @@ const Navigation = () => {
                     src={currentUser ? avatarImg : blancAvatarImg}
                     alt="User profile"
                   />
-                </div>
+                </a>
               </Link>
             </li>
           </ul>

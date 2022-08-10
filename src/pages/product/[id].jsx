@@ -15,8 +15,7 @@ import { addItemToCart } from "../../store/cart/cartSlice";
 
 import { AddBtnContext } from "../../contexts/add-btn-context";
 
-// import ImageCarousel from "../../components/image-carousel/image-carousel.component";
-import Button from "../../components/button/button.component";
+import LoadingSpinner from "../../components/loadingSpinner/loading-spinner.component";
 
 import { selectCategories } from "../../store/category/category.selector";
 
@@ -33,21 +32,8 @@ import styles from "./item.module.scss";
 /* This components is not typed with TS because of this issue (https://github.com/microsoft/TypeScript/issues/48267) */
 /* That is, at the time of writing this, TS does not support the <HTMLDialogElement> so with TS i would have to use a lot of @ts-ignores for this to work or use a completely different approach of writing a modal */
 
-// export const getStaticProps = async (context) => {
-//   console.log("context.query", context.query);
-//   // returns { id: episode.itunes.episode, title: episode.title}
-
-//   //you can make DB queries using the data in context.query
-//   return {
-//     props: {
-//       id: context.query.id, //pass it to the page props
-//     },
-//   };
-// };
-
 //TODO? click outside to close modal?
 const ItemPage = () => {
-  //FIXME
   const { addBtnRef } = useContext(AddBtnContext);
 
   const [item, setItem] = useState(null);
@@ -67,8 +53,8 @@ const ItemPage = () => {
   const categories = useSelector(selectCategories);
 
   useEffect(() => {
-    const womenIds = categories.women.map((item) => item.id);
-    const womenIncludes = womenIds.includes(id);
+    const womenIds = categories.women?.map((item) => item.id);
+    const womenIncludes = womenIds?.includes(id);
 
     const itemIndex = womenIncludes
       ? categories.women.findIndex((item) => item.id === id)
@@ -124,7 +110,6 @@ const ItemPage = () => {
       if (typeof dialog.showModal === "function") {
         dialog.showModal();
       } else {
-        dialog.showModal();
         console.log("The <dialog> API is not supported by this browser");
       }
     } else {
@@ -138,7 +123,7 @@ const ItemPage = () => {
         () =>
           import("../../components/image-carousel/image-carousel.component"),
         {
-          loading: () => <p>Image Carousel loading...</p>,
+          loading: () => <LoadingSpinner />,
           ssr: false,
         }
       ),

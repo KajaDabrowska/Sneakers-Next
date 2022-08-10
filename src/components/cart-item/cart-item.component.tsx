@@ -21,7 +21,7 @@ const CartItem = ({ cartItem }: Props) => {
   //TODO how does a screen reader announce this type of big ass link
   return (
     <li className={styles.item}>
-      <Link href={`/product-${cartItem.id}`}>
+      <Link href={`/product/${cartItem.id}`}>
         <a className={styles.imgAndDesc}>
           <div className={styles.image}>
             <Image src={imageUrl} alt="" width={47} height={47} />

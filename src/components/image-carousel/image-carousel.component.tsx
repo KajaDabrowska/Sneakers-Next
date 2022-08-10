@@ -47,19 +47,12 @@ const ImageCarousel = ({
   const maxWidthMediaQuery = 850;
   const size = useWindowSize();
 
-  //FIXME main image on mobile hight weird
-  //FIXME classes
   return (
     <div className={styles.imageCarousel}>
       <div className={`${styles.imageContainer} ${modalStyles}`}>
-        {/*FIXME no prev btn  */}
         <button onClick={prevImg} className={`${styles.btn} ${styles.btnPrev}`}>
           <div className={`${styles.icon} ${styles.iconPrev}`}>
-            <Image
-              src={prevIcon}
-              // className="image-container__icon image-container__icon--prev"
-              alt="Previous image"
-            />
+            <Image src={prevIcon} alt="Previous image" />
           </div>
         </button>
 
@@ -73,8 +66,8 @@ const ImageCarousel = ({
                     ? imageUrl
                     : imagesArray[carouselIndex - 1]
                 }
-                width={350}
-                height={350}
+                layout="fill"
+                objectFit="cover"
                 alt=""
               />
             </div>
@@ -85,9 +78,8 @@ const ImageCarousel = ({
               src={
                 carouselIndex === 0 ? imageUrl : imagesArray[carouselIndex - 1]
               }
-              width={isModal ? 600 : 300}
-              //FIXME width 100% cont
-              height={isModal ? 500 : 350}
+              layout="fill"
+              objectFit="cover"
               alt=""
             />
           </div>
@@ -95,11 +87,7 @@ const ImageCarousel = ({
 
         <button onClick={nextImg} className={`${styles.btn} ${styles.btnNext}`}>
           <div className={`${styles.icon} ${styles.iconNext}`}>
-            <Image
-              src={nextIcon}
-              // className="image-container__icon image-container__icon--next"
-              alt="Next image"
-            />
+            <Image src={nextIcon} alt="Next image" />
           </div>
         </button>
       </div>

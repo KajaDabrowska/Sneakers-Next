@@ -8,7 +8,7 @@ import {
 } from "../../store/cart/cart.selector";
 import { setCartDropdownHidden } from "../../store/cart/cartSlice";
 
-//TODO SVGs in NEXT
+
 import cartIcon from "../../public/assets/icon-cart.svg";
 
 import styles from "./cart-icon.module.scss";

@@ -40,10 +40,16 @@ const CheckoutItem = ({ item }: Props) => {
     <div className={styles.checkoutItem}>
       <li className={styles.item}>
         <Link href={`/product-${id}`}>
-          <div className={styles.image}>
-            {/* <span className="sr-only">{name} page</span> */}
-            <Image src={imageUrl} alt={`${name} page`} width={87} height={87} />
-          </div>
+          <a className={styles.image}>
+            <div>
+              <Image
+                src={imageUrl}
+                alt={`${name} page`}
+                width={87}
+                height={87}
+              />
+            </div>
+          </a>
         </Link>
         <div className={styles.flexContainer}>
           <div className={styles.description}>

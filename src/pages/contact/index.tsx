@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 
 import FormInput from "../../components/form-input/form-input.component";
 import Button from "../../components/button/button.component";
+import LoadingSpinner from "../../components/loadingSpinner/loading-spinner.component";
 
 import phoneIcon from "../../public/assets/icon-phone.svg";
 import mailIcon from "../../public/assets/icon-mail.svg";
@@ -51,7 +52,7 @@ const Contact = () => {
   const Map = useMemo(
     () =>
       dynamic(() => import("../../components/map/map.component"), {
-        loading: () => <p>Map is loading</p>,
+        loading: () => <LoadingSpinner />,
         ssr: false,
       }),
     []

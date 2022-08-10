@@ -22,12 +22,18 @@
   }
 
   .image {
-    border-radius: 1.5rem;
+    position: relative;
     height: 35rem;
     width: 100%;
-    object-fit: cover;
 
-    //TODO somehow help the images that need bigger height?
+    span {
+      border-radius: 1.5rem;
+      height: 35rem !important;
+      width: 100% !important;
+      object-fit: cover !important;
+
+      
+    }
   }
 
   .btn {
@@ -51,18 +57,17 @@
     }
   }
 
-  .btnPrev > span {
+  .btnPrev {
+    z-index: 1000;
     left: 1.5rem !important;
   }
 
-  .btnNext > span {
+  .btnNext {
+    z-index: 1000;
     right: 1.5rem !important;
   }
 
-  //TODO
-  // {
-  // span {} etc
-  // }
+  
   .icon > span {
     position: absolute !important;
     width: 0.8rem !important;
@@ -109,7 +114,13 @@
     }
   }
 
+  // The little images
   .image {
+    display: inline-block;
+    // position: relative;
+    width: 8rem;
+    height: 8rem;
+
     span {
       width: 8rem !important;
       height: 8rem !important;
@@ -140,6 +151,16 @@
   .image {
     height: 50rem;
     width: 60rem;
+
+    span {
+      height: 50rem !important;
+      width: 60rem !important;
+    }
+  }
+
+  // overwrite the one in modal from the media query
+  .btn {
+    display: unset;
   }
 
   .imageBtn {
@@ -157,13 +178,14 @@
   }
 
   .icon {
-    width: 1rem;
-
-    .iconPrev {
-      left: 35%;
+    span {
+      width: 1rem;
     }
-    .iconNext {
-      right: 35%;
-    }
+  }
+  .iconPrev span {
+    left: 35% !important;
+  }
+  .iconNext span {
+    right: 35% !important;
   }
 }

@@ -116,4 +116,8 @@
   width: 25rem;
   margin-top: 1rem;
   border-radius: 0.5rem;
+  // Flex, so that the loading spinner is in center
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

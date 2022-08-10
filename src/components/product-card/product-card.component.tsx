@@ -14,23 +14,16 @@ const ProductCard = ({ product }: Props) => {
 
   return (
     <div className={styles.product}>
-      {/*FIXME these links are not tabbable FIXED but look elsewhere*/}
-      <Link
-        href={{
-          pathname: `/product/${id}`,
-        }}
-      >
+      <Link href={`/product/${id}`}>
         <a className={styles.link}>
           <figure>
-            {/*FIXME shorten the title cuz the focus style is wider than image sometimes */}
             <div className={styles.imageWrapper}>
               <Image
                 src={imageUrl}
                 alt=""
-                // className={styles.image}
-                // layout="fill"
+             
                 layout="intrinsic"
-                //TODO make the layout fill once u fix the classes for CSS module
+                
                 width={250}
                 height={250}
               />

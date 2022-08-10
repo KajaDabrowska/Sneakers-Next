@@ -1,5 +1,5 @@
 .checkoutItem {
-  // padding: 1rem 1rem;
+  // max-height: 11.2rem;
 
   .flexContainer {
     display: flex;
@@ -18,12 +18,17 @@
       border-width: 1px;
     }
 
-    .image > span {
+    .image {
       width: 8.7rem;
       height: 8.7rem;
-      border-radius: 0.5rem;
-      // can't have gap on parent because it causes issues for delete icon
+      // can't have gap on flex parent because it causes issues for delete icon
       margin-right: 1rem !important;
+
+      span {
+        width: 8.7rem !important;
+        height: 8.7rem !important;
+        border-radius: 0.5rem;
+      }
     }
 
     .description {

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import { useRouter } from "next/router";
 import { AuthError, AuthErrorCodes } from "firebase/auth";
 
@@ -66,8 +65,7 @@ const SignUpForm = () => {
       }
 
       resetFormFields();
-      // navigate("/");
-      //FIXME does this work
+
       router.push("/");
     } catch (err) {
       if ((err as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {

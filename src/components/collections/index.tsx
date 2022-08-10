@@ -18,9 +18,11 @@ const Collections = () => {
         <div key={title} className={styles.collection}>
           <h2>
             <Link href={`/${title}`}>
-              <span className={styles.title}>
-                {title.charAt(0).toUpperCase() + title.slice(1)}
-              </span>
+              <a>
+                <span className={styles.title}>
+                  {title.charAt(0).toUpperCase() + title.slice(1)}
+                </span>
+              </a>
             </Link>
           </h2>
 
