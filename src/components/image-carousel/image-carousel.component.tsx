@@ -69,6 +69,7 @@ const ImageCarousel = ({
                 layout="fill"
                 objectFit="cover"
                 alt=""
+                priority
               />
             </div>
           </button>

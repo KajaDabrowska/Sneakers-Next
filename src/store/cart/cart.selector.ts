@@ -1,6 +1,6 @@
 import { createDraftSafeSelector } from "@reduxjs/toolkit";
 
-import { RootStateType } from "../root-reducer";
+import { RootStateType } from "../store";
 import { CartStateType } from "./cartSlice";
 
 const selectCartReducer = (state: RootStateType): CartStateType => state.cart;
