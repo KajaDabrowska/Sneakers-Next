@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { UserDataType } from "../../utils/firebase/firebase.utils";
+import { UserDataType } from "../../firebase/firebase.utils";
 
 export type UserStateType = {
   currentUser: UserDataType | null;
